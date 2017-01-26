@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="/home/ad/fshome2/u2/j/jemisalo/Linux/kurssit/OhHa/TD/TD/src/main/java/def/td/Frame.java">
+</file>
+<file name="/home/ad/fshome2/u2/j/jemisalo/Linux/kurssit/OhHa/TD/TD/src/main/java/def/td/Piirtoalusta.java">
+</file>
+<file name="/home/ad/fshome2/u2/j/jemisalo/Linux/kurssit/OhHa/TD/TD/src/main/java/def/td/logiikka/Pelilogiikka.java">
+</file>
+<file name="/home/ad/fshome2/u2/j/jemisalo/Linux/kurssit/OhHa/TD/TD/src/main/java/def/td/logiikka/Pelitila.java">
+</file>
+<file name="/home/ad/fshome2/u2/j/jemisalo/Linux/kurssit/OhHa/TD/TD/src/main/java/def/td/piirrettavat/Torni.java">
+</file>
+<file name="/home/ad/fshome2/u2/j/jemisalo/Linux/kurssit/OhHa/TD/TD/src/main/java/def/td/piirrettavat/PolunPala.java">
+</file>
+<file name="/home/ad/fshome2/u2/j/jemisalo/Linux/kurssit/OhHa/TD/TD/src/main/java/def/td/piirrettavat/Maali.java">
+</file>
+<file name="/home/ad/fshome2/u2/j/jemisalo/Linux/kurssit/OhHa/TD/TD/src/main/java/def/td/piirrettavat/Ammus.java">
+</file>
+<file name="/home/ad/fshome2/u2/j/jemisalo/Linux/kurssit/OhHa/TD/TD/src/main/java/def/td/piirrettavat/Sijainnillinen.java">
+</file>
+<file name="/home/ad/fshome2/u2/j/jemisalo/Linux/kurssit/OhHa/TD/TD/src/main/java/def/td/piirrettavat/Liikkuva.java">
+</file>
+<file name="/home/ad/fshome2/u2/j/jemisalo/Linux/kurssit/OhHa/TD/TD/src/main/java/def/td/main/Main.java">
+</file>
+</checkstyle>

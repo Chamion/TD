@@ -77,11 +77,12 @@ public class Pelitila {
     }
 
     public void liiku() {
-        /*for (Maali maali : this.maalit) {
-            if (maali.liiku()) {
+        for (Maali maali : this.maalit) {
+            maali.liiku(); //poista tämä, kun if-lause on käytössä.
+            /*if (maali.liiku()) {
                 //gameover
-            }
-        }*/
+            }*/
+        }
         for (Ammus ammus : this.ammukset) {
             ArrayList<Ammus> tuhottavatA = new ArrayList<>();
             ArrayList<Maali> tuhottavatM = new ArrayList<>();

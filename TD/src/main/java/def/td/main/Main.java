@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package def.td;
+package def.td.main;
 
 /**
  *
@@ -25,7 +25,7 @@ public class Main {
         tila.tulostaTornit();
         tila.lisaaMaali();
         tila.tulostaMaalit();
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 100; i++) {
             tila.liiku();
             tila.tahtaa();
         }
