@@ -1,4 +1,4 @@
-Aihe:
+#Aihe:
 Simppeli "Tower Defense" tyylinen peli. Toimivan pelin jälkeen laajennuksena voi lisätä kenttäeditorin ja/tai satunnaisgeneroinnin, riippuen siitä, riittääkö aikaa.
 
 Käyttäjän toiminnot:
@@ -15,3 +15,6 @@ Käyttäjän toiminnot:
 	-Vihollisaaltojen määrittelyn
 -Luodun kentän pelaaminen
 -Satunnaisgeneroidun kentän pelaaminen
+
+#Luokkakaavio
+![luokkakaavio](/kaaviot/Luokkakaavio_vk2.png)

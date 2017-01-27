@@ -8,4 +8,5 @@ Päivä | Tunnit | Kuvaus
 26.01.2017 | 1.5h | Lisää peruslogiikkaa, testit suppeita.
 26.01.2017 | 1.5h | Peruslogiikan demovalmistelut ja testien kirjoittamista.
 26.01.2017 | 0.5h | Pit ja Checkstyle + README.md täydennys.
+27.01.2017 | 0.5h | Luokkakaavio.
 ... | ... | ...
