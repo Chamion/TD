@@ -17,4 +17,4 @@ Käyttäjän toiminnot:
 -Satunnaisgeneroidun kentän pelaaminen
 
 #Luokkakaavio
-![luokkakaavio](/kaaviot/Luokkakaavio_vk2.png)
+!["luokkakaavio"](/kaaviot/Luokkakaavio_vk2.png)
