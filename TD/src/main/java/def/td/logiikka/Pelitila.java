@@ -9,6 +9,7 @@ import def.td.piirrettavat.Ammus;
 import def.td.piirrettavat.Maali;
 import def.td.piirrettavat.PolunPala;
 import def.td.piirrettavat.Torni;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 /**
@@ -66,13 +67,25 @@ public class Pelitila {
     }
 
     public void lisaaMaali() {
-        //tulee muuttumaan, kun lisään erilaisia maalityyppejä.
+        //tulee kuormittumaan, kun lisään erilaisia maalityyppejä.
         this.maalit.add(new Maali(this.polku));
+    }
+
+    public void tuhoaMaali(Maali maali) {
+        maali.tuhoa(this);
+        if (this.maalit.contains(maali)) {
+            this.maalit.remove(maali);
+        }
+    }
+
+    public void lisaaAmmus(Maali maali, int[] sijainti) {
+        //kuormitus myöhemmin
+        this.ammukset.add(new Ammus(sijainti, maali));
     }
 
     public void tahtaa() {
         for (Torni torni : this.tornit) {
-            torni.tahtaa(this.maalit);
+            torni.tahtaa(this.maalit, this);
         }
     }
 
@@ -83,21 +96,18 @@ public class Pelitila {
                 //gameover
             }*/
         }
+        ArrayList<Ammus> tuhottavatA = new ArrayList<>();
+        ArrayList<Maali> tuhottavatM = new ArrayList<>();
         for (Ammus ammus : this.ammukset) {
-            ArrayList<Ammus> tuhottavatA = new ArrayList<>();
-            ArrayList<Maali> tuhottavatM = new ArrayList<>();
-            if (ammus.liiku()) {
+            if (ammus.liiku(this)) {
                 tuhottavatA.add(ammus);
-                if (ammus.getMaali().kuollut()) {
-                    tuhottavatM.add(ammus.getMaali());
-                }
             }
-            for (Ammus tuhottava : tuhottavatA) {
-                this.ammukset.remove(tuhottava);
-            }
-            for (Maali tuhottava : tuhottavatM) {
-                this.maalit.remove(tuhottava);
-            }
+        }
+        for (Ammus tuhottava : tuhottavatA) {
+            this.ammukset.remove(tuhottava);
+        }
+        for (Maali tuhottava : tuhottavatM) {
+            this.maalit.remove(tuhottava);
         }
     }
 
@@ -117,6 +127,18 @@ public class Pelitila {
         return this.pisteet;
     }
 
+    public void piirra(Graphics graphics) {
+        for (Maali maali : this.maalit) {
+            maali.piirra(graphics);
+        }
+        for (Torni torni : this.tornit) {
+            torni.piirra(graphics);
+        }
+        for (Ammus ammus : this.ammukset) {
+            ammus.piirra(graphics);
+        }
+    }
+
     //Debuggaukseen
     public void tulostaTornit() {
         for (Torni torni : this.tornit) {
@@ -127,6 +149,12 @@ public class Pelitila {
     public void tulostaMaalit() {
         for (Maali maali : this.maalit) {
             System.out.println(maali);
+        }
+    }
+
+    public void tulostaAmmukset() {
+        for (Ammus ammus : this.ammukset) {
+            System.out.println(ammus);
         }
     }
 }

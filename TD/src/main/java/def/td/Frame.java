@@ -9,6 +9,8 @@ package def.td;
  *
  * @author jemisalo
  */
+import def.td.logiikka.Pelilogiikka;
+import def.td.logiikka.Pelitila;
 import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.*;
@@ -16,9 +18,12 @@ import javax.swing.*;
 public class Frame implements Runnable {
 
     private JFrame frame;
+    private Pelitila tila;
+    private Pelilogiikka logiikka;
+    private Piirtoalusta piirtoalusta;
 
     public Frame() {
-
+        this.logiikka = new Pelilogiikka();
     }
 
     @Override
@@ -32,8 +37,13 @@ public class Frame implements Runnable {
     }
 
     private void luoKomponentit(Container container) {
-        Piirtoalusta piirtoalusta = new Piirtoalusta();
-        container.add(piirtoalusta);
+        this.piirtoalusta = new Piirtoalusta();
+        container.add(this.piirtoalusta);
+        this.logiikka.setPiirtoalusta(piirtoalusta);
+        this.logiikka.kaynnista();
     }
 
+    private void piirra() {
+        this.piirtoalusta.paintComponent(this.piirtoalusta.getGraphics());
+    }
 }

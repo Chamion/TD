@@ -9,20 +9,26 @@ package def.td;
  *
  * @author jemisalo
  */
+import def.td.logiikka.Pelitila;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
 public class Piirtoalusta extends JPanel {
 
+    private Pelitila tila;
+
     public Piirtoalusta() {
         super.setBackground(Color.WHITE);
+    }
+
+    public void setPelitila(Pelitila tila) {
+        this.tila = tila;
     }
 
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-        graphics.setColor(Color.red);
-        graphics.fillRect(200, 200, 100, 300);
+        this.tila.piirra(graphics);
     }
 }

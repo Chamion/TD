@@ -5,6 +5,9 @@
  */
 package def.td.piirrettavat;
 
+import def.td.logiikka.Pelitila;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 /**
@@ -53,7 +56,7 @@ public class Torni extends Sijainnillinen {
         return false;
     }
 
-    public void tahtaa(ArrayList<Maali> maalit) {
+    public void tahtaa(ArrayList<Maali> maalit, Pelitila tila) {
         if (this.lataus >= this.maxLataus) {
             Maali paras = null;
             for (Maali maali : maalit) {
@@ -66,7 +69,7 @@ public class Torni extends Sijainnillinen {
                 }
             }
             if (paras != null) {
-                this.ammu(paras);
+                this.ammu(paras, tila);
                 this.lataus = 0;
             }
         } else {
@@ -74,17 +77,17 @@ public class Torni extends Sijainnillinen {
         }
     }
 
-    private void ammu(Maali maali) {
-        System.out.println(this.toString() + " ampuu kohdetta " + maali);
+    private void ammu(Maali maali, Pelitila tila) {
+        tila.lisaaAmmus(maali, this.sijainti());
     }
 
     public int hinta() {
         return this.hinta;
     }
 
-    @Override
-    public int getSade() {
-        return this.sade;
+    public void piirra(Graphics graphics) {
+        graphics.setColor(Color.black);
+        graphics.fillRect(this.sijainti()[0] - 5, this.sijainti()[1] - 5, 10, 10);
     }
 
     @Override
@@ -113,4 +116,5 @@ public class Torni extends Sijainnillinen {
     public String toString() {
         return "Torni " + super.sijainti()[0] + "," + super.sijainti()[1];
     }
+
 }

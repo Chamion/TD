@@ -5,6 +5,9 @@
  */
 package def.td.piirrettavat;
 
+import def.td.logiikka.Pelitila;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 /**
@@ -41,6 +44,10 @@ public class Maali extends Liikkuva {
         return false;
     }
 
+    public void tuhoa(Pelitila tila) {
+        return;
+    }
+
     public boolean kuollut() {
         return this.hp <= 0;
     }
@@ -61,6 +68,11 @@ public class Maali extends Liikkuva {
 
     public int getAskel() {
         return this.askel;
+    }
+
+    public void piirra(Graphics graphics) {
+        graphics.setColor(Color.blue);
+        graphics.fillOval(this.sijainti()[0] - 5, this.sijainti()[1] - 5, 10, 10);
     }
 
     @Override
