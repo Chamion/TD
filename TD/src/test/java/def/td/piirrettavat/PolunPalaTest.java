@@ -5,10 +5,7 @@
  */
 package def.td.piirrettavat;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -17,33 +14,22 @@ import static org.junit.Assert.*;
  * @author jemisalo
  */
 public class PolunPalaTest {
-    
+
     private PolunPala pala;
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+
     @Before
     public void setUp() {
-        this.pala = new PolunPala(new int[]{100,100});
-    }
-    
-    @After
-    public void tearDown() {
+        this.pala = new PolunPala(new int[]{100, 100});
     }
 
     @Test
-    public void sijainti(){
-        assertEquals(this.pala.sijainti()[0],100);
-        assertEquals(this.pala.sijainti()[1],100);
+    public void sijaintiPalauttaaOikeanArvon() {
+        assertEquals(this.pala.sijainti()[0], 100);
+        assertEquals(this.pala.sijainti()[1], 100);
     }
+
     @Test
-    public void sadeOnKymmenen(){
-        assertEquals(this.pala.getSade(),10);
+    public void sadeOnKymmenen() {
+        assertEquals(this.pala.getSade(), 10);
     }
 }
