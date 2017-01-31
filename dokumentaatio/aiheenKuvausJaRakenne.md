@@ -3,59 +3,31 @@ Simppeli "Tower Defense" tyylinen peli. Toimivan pelin jälkeen laajennuksena vo
 
 Käyttäjän toiminnot:
 
+ *Esirakennettujen kenttien pelaaminen
 
-*Esirakennettujen kenttien pelaaminen
-
-
-
-Sisältää yksinkertaisimmillaan:
+ Sisältää yksinkertaisimmillaan:
 	
+  *Tornin lisäämisen
 
+  *Seuraavan vihollisaallon vapauttamisen
 
+ Voi myös sisältää:
 
-*Tornin lisäämisen
+  *Tornin muokkaamisen/poistamisen
 
+  *Pelin tallentamisen
 
+ *Kentän luominen ja tallentaminen
 
+ Sisältää:
 
-*Seuraavan vihollisaallon vapauttamisen
+  *Radan piirtämisen
 
+  *Vihollisaaltojen määrittelyn
 
+ *Luodun kentän pelaaminen
 
-Voi myös sisältää:
-
-
-
-
-*Tornin muokkaamisen/poistamisen
-
-
-
-
-*Pelin tallentamisen
-
-
-*Kentän luominen ja tallentaminen
-
-
-
-Sisältää:
-
-
-
-
-*Radan piirtämisen
-
-
-
-
-*Vihollisaaltojen määrittelyn
-
-
-*Luodun kentän pelaaminen
-
-
-*Satunnaisgeneroidun kentän pelaaminen
+ *Satunnaisgeneroidun kentän pelaaminen
 
 #Luokkakaavio
 !["luokkakaavio"](Luokkakaavio_vk2.png)
