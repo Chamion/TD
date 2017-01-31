@@ -89,6 +89,11 @@ public class Torni extends Sijainnillinen {
         graphics.setColor(Color.black);
         graphics.fillRect(this.sijainti()[0] - 5, this.sijainti()[1] - 5, 10, 10);
     }
+    
+    @Override
+    public int getSade(){
+        return 10;
+    }
 
     @Override
     public boolean equals(Object o) {

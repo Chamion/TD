@@ -91,7 +91,6 @@ public class PelitilaTest {
         assertEquals(this.tila.tornit().get(0), torni);
         this.tila.lisaaTorni(torni);
         assertEquals(this.tila.tornit().size(), 1);
-
         ArrayList<int[]> sijainnit = new ArrayList<>();
         sijainnit.add(new int[]{100, 100});
         Pelitila polulla = new Pelitila(sijainnit);

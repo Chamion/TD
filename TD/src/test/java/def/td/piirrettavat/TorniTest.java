@@ -39,7 +39,7 @@ public class TorniTest {
         assertEquals(this.torni.hinta(), 1);
     }
 
-    //Päällekkäisyystehtävät olettavat säteen olevan 10.
+    //Päällekkäisyystestit olettavat säteen olevan 10.
     @Test
     public void paallekkainTrueJosJaVainJosPaallekkainParametrinKanssa() {
         Torni toinen = new Torni(100, 100);
