@@ -86,28 +86,30 @@ public class TorniTest {
         toiset.add(new PolunPala(90, 100));
         assertTrue(this.torni.paallekkain(toiset));
     }
+
     @Test
-    public void setHintaMuuttaaHintaa(){
-        if(this.torni.hinta()!=1){
+    public void setHintaMuuttaaHintaa() {
+        if (this.torni.hinta() != 1) {
             this.torni.setHinta(1);
-            assertEquals(1,this.torni.hinta());
-        }else{
+            assertEquals(1, this.torni.hinta());
+        } else {
             this.torni.setHinta(2);
-            assertEquals(2,this.torni.hinta());
+            assertEquals(2, this.torni.hinta());
         }
     }
+
     @Test
-    public void setLatausAikaMuuttaaVaadittuaLatausta(){
+    public void setLatausAikaMuuttaaVaadittuaLatausta() {
         ArrayList<int[]> polku = new ArrayList<>();
-        polku.add(new int[]{0,100});
-        polku.add(new int[]{300,100});
+        polku.add(new int[]{0, 100});
+        polku.add(new int[]{300, 100});
         Pelitila tila = new Pelitila(polku);
         tila.lisaaMaali();
         tila.lisaaPisteet(this.torni.hinta());
         tila.lisaaTorni(this.torni);
         tila.tornit().get(0).setLatausAika(99999);
         tila.maalit().get(0).setNopeus(12);
-        for(int i=1;i<10;i++){
+        for (int i = 1; i < 10; i++) {
             tila.liiku();
             tila.tahtaa();
             assertTrue(tila.ammukset().isEmpty());

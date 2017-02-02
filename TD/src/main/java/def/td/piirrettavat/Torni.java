@@ -42,7 +42,8 @@ public class Torni extends Sijainnillinen {
     public void setLatausAika(int uusi) {
         this.maxLataus = uusi;
     }
-    public void setHinta(int uusi){
+
+    public void setHinta(int uusi) {
         this.hinta = uusi;
     }
 
@@ -92,9 +93,9 @@ public class Torni extends Sijainnillinen {
         graphics.setColor(Color.black);
         graphics.fillRect(this.sijainti()[0] - 5, this.sijainti()[1] - 5, 10, 10);
     }
-    
+
     @Override
-    public int getSade(){
+    public int getSade() {
         return 10;
     }
 

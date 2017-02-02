@@ -122,7 +122,7 @@ public class Pelitila {
     public ArrayList<Maali> maalit() {
         return this.maalit;
     }
-    
+
     public ArrayList<Ammus> ammukset() {
         return this.ammukset;
     }

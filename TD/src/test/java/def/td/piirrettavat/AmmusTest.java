@@ -16,10 +16,10 @@ import static org.junit.Assert.*;
  * @author jemisalo
  */
 public class AmmusTest {
-    
+
     private Ammus ammus;
     private Pelitila tila;
-    
+
     @Before
     public void setUp() {
         ArrayList<int[]> polku = new ArrayList<>();
@@ -27,32 +27,35 @@ public class AmmusTest {
         polku.add(new int[]{302, 100});
         this.tila = new Pelitila(polku);
         this.tila.lisaaMaali();
-        this.ammus = new Ammus(new int[]{100, 200},this.tila.maalit().get(0));
+        this.ammus = new Ammus(new int[]{100, 200}, this.tila.maalit().get(0));
     }
-    
+
     @Test
-    public void liikuSiirtaaAmmustaOikeanMatkan(){
+    public void liikuSiirtaaAmmustaOikeanMatkan() {
         this.ammus.liiku(tila);
-        assertEquals(100,this.ammus.sijainti()[0]);
-        assertEquals(180,this.ammus.sijainti()[1]);
+        assertEquals(100, this.ammus.sijainti()[0]);
+        assertEquals(180, this.ammus.sijainti()[1]);
     }
+
     @Test
-    public void liikuSiirtaaAmmustaOikeanMatkanVinottain(){
-        Ammus vino = new Ammus(new int[]{200,200},this.tila.maalit().get(0));
+    public void liikuSiirtaaAmmustaOikeanMatkanVinottain() {
+        Ammus vino = new Ammus(new int[]{200, 200}, this.tila.maalit().get(0));
         vino.liiku(tila);
-        assertEquals(186,vino.sijainti()[0]);
-        assertEquals(186,vino.sijainti()[1]);
+        assertEquals(186, vino.sijainti()[0]);
+        assertEquals(186, vino.sijainti()[1]);
     }
+
     @Test
-    public void liikuPalauttaaTrueOsuessa(){
+    public void liikuPalauttaaTrueOsuessa() {
         assertFalse(ammus.liiku(tila));
         assertFalse(ammus.liiku(tila));
         assertFalse(ammus.liiku(tila));
         assertFalse(ammus.liiku(tila));
         assertTrue(ammus.liiku(tila));
     }
+
     @Test
-    public void getMaaliPalauttaaOikeanMaalin(){
-        assertEquals(this.tila.maalit().get(0).toString(),this.ammus.getMaali().toString());
+    public void getMaaliPalauttaaOikeanMaalin() {
+        assertEquals(this.tila.maalit().get(0).toString(), this.ammus.getMaali().toString());
     }
 }
