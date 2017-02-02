@@ -13,3 +13,6 @@ Pelin grafiikkaan en aio panostaa, koska se on kurssin kannalta epäoleellista. 
 [aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
 
 [tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
+
+[pit-raportti](https://htmlpreview.github.io/?https://github.com/Chamion/TD/blob/master/dokumentaatio/pit-raportti/201702021653/index.html)
+[checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/Chamion/TD/blob/master/dokumentaatio/checkstyle-raportti/checkstyle.html)
