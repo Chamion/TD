@@ -30,4 +30,4 @@ Käyttäjän toiminnot:
  * Satunnaisgeneroidun kentän pelaaminen
 
 #Luokkakaavio
-!["luokkakaavio"](Luokkakaavio_vk2.png)
+!["luokkakaavio"](Luokkakaavio.png)

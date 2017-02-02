@@ -122,6 +122,10 @@ public class Pelitila {
     public ArrayList<Maali> maalit() {
         return this.maalit;
     }
+    
+    public ArrayList<Ammus> ammukset() {
+        return this.ammukset;
+    }
 
     public int getPisteet() {
         return this.pisteet;
@@ -136,25 +140,6 @@ public class Pelitila {
         }
         for (Ammus ammus : this.ammukset) {
             ammus.piirra(graphics);
-        }
-    }
-
-    //Debuggaukseen
-    public void tulostaTornit() {
-        for (Torni torni : this.tornit) {
-            System.out.println(torni);
-        }
-    }
-
-    public void tulostaMaalit() {
-        for (Maali maali : this.maalit) {
-            System.out.println(maali);
-        }
-    }
-
-    public void tulostaAmmukset() {
-        for (Ammus ammus : this.ammukset) {
-            System.out.println(ammus);
         }
     }
 }

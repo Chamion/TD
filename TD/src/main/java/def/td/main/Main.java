@@ -9,7 +9,7 @@ package def.td.main;
  *
  * @author jemisalo
  */
-import def.td.Frame;
+import def.td.frame.Frame;
 import javax.swing.SwingUtilities;
 
 public class Main {

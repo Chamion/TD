@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package def.td;
+package def.td.frame;
 
 /**
  *
@@ -30,5 +30,18 @@ public class Piirtoalusta extends JPanel {
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         this.tila.piirra(graphics);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this.getClass() == o.getClass()) {
+            return this.equals((Piirtoalusta) o);
+        } else {
+            return false;
+        }
+    }
+
+    private boolean equals(Piirtoalusta p) {
+        return this.toString().equals(p.toString());
     }
 }

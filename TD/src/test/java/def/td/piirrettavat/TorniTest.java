@@ -5,6 +5,7 @@ package def.td.piirrettavat;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import def.td.logiikka.Pelitila;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
@@ -84,5 +85,36 @@ public class TorniTest {
         toiset.add(new PolunPala(120, 100));
         toiset.add(new PolunPala(90, 100));
         assertTrue(this.torni.paallekkain(toiset));
+    }
+    @Test
+    public void setHintaMuuttaaHintaa(){
+        if(this.torni.hinta()!=1){
+            this.torni.setHinta(1);
+            assertEquals(1,this.torni.hinta());
+        }else{
+            this.torni.setHinta(2);
+            assertEquals(2,this.torni.hinta());
+        }
+    }
+    @Test
+    public void setLatausAikaMuuttaaVaadittuaLatausta(){
+        ArrayList<int[]> polku = new ArrayList<>();
+        polku.add(new int[]{0,100});
+        polku.add(new int[]{300,100});
+        Pelitila tila = new Pelitila(polku);
+        tila.lisaaMaali();
+        tila.lisaaPisteet(this.torni.hinta());
+        tila.lisaaTorni(this.torni);
+        tila.tornit().get(0).setLatausAika(99999);
+        tila.maalit().get(0).setNopeus(12);
+        for(int i=1;i<10;i++){
+            tila.liiku();
+            tila.tahtaa();
+            assertTrue(tila.ammukset().isEmpty());
+        }
+        tila.tornit().get(0).setLatausAika(0);
+        tila.liiku();
+        tila.tahtaa();
+        assertFalse(tila.ammukset().isEmpty());
     }
 }

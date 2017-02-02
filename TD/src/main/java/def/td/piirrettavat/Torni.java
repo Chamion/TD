@@ -27,7 +27,7 @@ public class Torni extends Sijainnillinen {
         this.sade = 10;
         this.hinta = 1;
         this.kantama = 100;
-        this.lataus = 0;
+        this.lataus = 1;
         this.maxLataus = 10;
     }
 
@@ -41,6 +41,9 @@ public class Torni extends Sijainnillinen {
 
     public void setLatausAika(int uusi) {
         this.maxLataus = uusi;
+    }
+    public void setHinta(int uusi){
+        this.hinta = uusi;
     }
 
     public boolean paallekkain(Sijainnillinen toinen) {
@@ -70,7 +73,7 @@ public class Torni extends Sijainnillinen {
             }
             if (paras != null) {
                 this.ammu(paras, tila);
-                this.lataus = 0;
+                this.lataus = 1;
             }
         } else {
             this.lataus++;

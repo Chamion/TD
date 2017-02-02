@@ -5,7 +5,7 @@
  */
 package def.td.logiikka;
 
-import def.td.Piirtoalusta;
+import def.td.frame.Piirtoalusta;
 import def.td.piirrettavat.Torni;
 import java.util.ArrayList;
 import javax.swing.Timer;
@@ -33,7 +33,6 @@ public class Pelilogiikka {
         this.tila = new Pelitila(polku);
         this.tila.lisaaPisteet(100);
         this.tila.lisaaTorni(new Torni(200, 100));
-        this.tila.tulostaTornit();
         this.tila.lisaaMaali();
         this.tila.maalit().get(0).setHp(10);
         this.aallot = new ArrayList<>();
@@ -49,11 +48,8 @@ public class Pelilogiikka {
         kello.start();
     }
 
-    public void seuraavaAalto() {
-        //"Seuraava aalto" napin toiminto.
-    }
-
-    private void piirra() {
-        //Paljon myöhemmin.
+    //Testausta varten
+    public Piirtoalusta getPiirtoalusta() {
+        return this.piirtoalusta;
     }
 }

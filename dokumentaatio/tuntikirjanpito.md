@@ -11,4 +11,7 @@ Päivä | Tunnit | Kuvaus
 27.01.2017 | 0.5h | Luokkakaavio.
 31.01.2017 | 0.75h | Palautuksen mukaisia korjauksia.
 31.01.2017 | 1.5h | Ammus-luokan viimeistely + graafinen esitys.
+31.01.2017 | 0.5h | AmmusTest.
+02.02.2017 | 0.5h | PelilogiikkaTest alku ja PelitilaTest parannus.
+02.02.2017 | 0.25 | Luokkakaavio.
 ... | ... | ...

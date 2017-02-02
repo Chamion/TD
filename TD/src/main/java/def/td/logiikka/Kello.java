@@ -5,7 +5,7 @@
  */
 package def.td.logiikka;
 
-import def.td.Piirtoalusta;
+import def.td.frame.Piirtoalusta;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
