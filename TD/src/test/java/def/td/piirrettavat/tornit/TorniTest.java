@@ -7,6 +7,7 @@ package def.td.piirrettavat.tornit;
  */
 import def.td.logiikka.Pelitila;
 import def.td.piirrettavat.PolunPala;
+import def.td.piirrettavat.ammukset.Ammus;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
@@ -120,17 +121,30 @@ public class TorniTest {
         tila.tahtaa();
         assertFalse(tila.ammukset().isEmpty());
     }
-    
+
     @Test
-    public void equalsTunnistaaSamat(){
+    public void equalsTunnistaaSamat() {
         Torni sama = new Torni(100, 100);
         assertTrue(sama.equals(this.torni));
     }
-    
+
     @Test
-    public void equalsHylkaaEri(){
-        Torni eri = new Torni(100,99);
+    public void equalsHylkaaEri() {
+        Torni eri = new Torni(100, 99);
         assertFalse(eri.equals(this.torni));
-        assertFalse(this.torni.equals(new PolunPala(100,100)));
+        assertFalse(this.torni.equals(new PolunPala(100, 100)));
+    }
+
+    @Test
+    public void ammuLuoOikeanAmmuksen() {
+        ArrayList<int[]> polku = new ArrayList<>();
+        polku.add(new int[]{0, 100});
+        polku.add(new int[]{300, 100});
+        Pelitila tila = new Pelitila(polku);
+        tila.lisaaMaali();
+        tila.lisaaPisteet(this.torni.hinta());
+        tila.lisaaTorni(this.torni);
+        this.torni.ammu(tila.maalit().get(0), tila);
+        assertEquals(new Ammus(this.torni.sijainti(), tila.maalit().get(0)), tila.ammukset().get(0));
     }
 }

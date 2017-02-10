@@ -8,8 +8,7 @@ package def.td.piirrettavat.ammukset;
 import def.td.piirrettavat.maalit.Maali;
 
 /**
- *
- * @author jemisalo
+ * Ammus, joka liikkuu aina nopeutensa verran kohti Maaliaan.
  */
 public class HakeutuvaAmmus extends Ammus {
 

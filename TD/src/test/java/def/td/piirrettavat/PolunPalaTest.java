@@ -25,23 +25,23 @@ public class PolunPalaTest {
 
     @Test
     public void sijaintiPalauttaaOikeanArvon() {
-        assertEquals(this.pala.sijainti()[0], 100);
-        assertEquals(this.pala.sijainti()[1], 100);
+        assertEquals(100, this.pala.sijainti()[0]);
+        assertEquals(100, this.pala.sijainti()[1]);
     }
 
     @Test
     public void sadeOnKymmenen() {
-        assertEquals(this.pala.getSade(), 10);
+        assertEquals(10, this.pala.getSade());
     }
-    
+
     @Test
-    public void equalsTunnistaaSamat(){
+    public void equalsTunnistaaSamat() {
         PolunPala sama = new PolunPala(new int[]{100, 100});
         assertTrue(sama.equals(this.pala));
     }
-    
+
     @Test
-    public void equalsHylkaaEri(){
+    public void equalsHylkaaEri() {
         PolunPala eri = new PolunPala(new int[]{101, 100});
         assertFalse(eri.equals(this.pala));
         eri = new PolunPala(new int[]{99, 100});

@@ -10,8 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- *
- * @author jemisalo
+ * Event Listener ajastimelle.
  */
 public class Kello implements ActionListener {
 

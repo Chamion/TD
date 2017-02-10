@@ -12,8 +12,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 /**
- *
- * @author jemisalo
+ * Ammus-olio esittää Maalia kohti ammuttua ammusta, joka Maaliin osuessaan
+ * katoaa ja kutsuu Maalin osuma() metodia.
  */
 public class Ammus extends Liikkuva {
 
@@ -25,8 +25,15 @@ public class Ammus extends Liikkuva {
         super.setNopeus(20);
     }
 
+    /**
+     * Siirtää Ammusta sen nopeuden verran kohti sen Maalia.
+     *
+     * @param tila Pelitila, jossa Ammus on
+     *
+     * @return true, jos Ammus on törmännyt johonkin ja tulisi tuhota
+     */
     public boolean liiku(Pelitila tila) {
-        if(this.maali == null){
+        if (this.maali == null) {
             return true;
         }
         if (this.maali.kuollut()) {
@@ -54,24 +61,24 @@ public class Ammus extends Liikkuva {
     public String toString() {
         return "Ammus " + this.sijainti()[0] + ", " + this.sijainti()[1];
     }
-    
+
     @Override
-    public boolean equals(Object o){
-        if(this.getClass()!=o.getClass()){
+    public boolean equals(Object o) {
+        if (this.getClass() != o.getClass()) {
             return false;
         }
         return this.equals((Ammus) o);
     }
-    
-    private boolean equals(Ammus o){
-        if(super.sijainti()[0]!=o.sijainti()[0]
-                || super.sijainti()[1]!=o.sijainti()[1]){
+
+    private boolean equals(Ammus o) {
+        if (super.sijainti()[0] != o.sijainti()[0]
+                || super.sijainti()[1] != o.sijainti()[1]) {
             return false;
         }
-        if(this.maali!=o.getMaali()){
+        if (this.maali != o.getMaali()) {
             return false;
         }
-        if(super.getNopeus()!=o.getNopeus()){
+        if (super.getNopeus() != o.getNopeus()) {
             return false;
         }
         return true;

@@ -10,19 +10,20 @@ import def.td.piirrettavat.ammukset.HakeutuvaAmmus;
 import def.td.piirrettavat.maalit.Maali;
 
 /**
- *
- * @author jemisalo
+ * Torni, joka ampuu HakeutuvaAmmuksia yksi kerrallaan.
  */
-public class PerusTorni extends Torni{
-    public PerusTorni(int x, int y){
-        super(x,y);
+public class PerusTorni extends Torni {
+
+    public PerusTorni(int x, int y) {
+        super(x, y);
         super.setHinta(10);
         super.setLatausAika(10);
         super.setKantama(200);
         super.setSade(10);
     }
+
     @Override
-    public void ammu(Maali maali, Pelitila tila){
-        tila.lisaaAmmus(new HakeutuvaAmmus(this.sijainti(),maali));
+    public void ammu(Maali maali, Pelitila tila) {
+        tila.lisaaAmmus(new HakeutuvaAmmus(this.sijainti(), maali));
     }
 }

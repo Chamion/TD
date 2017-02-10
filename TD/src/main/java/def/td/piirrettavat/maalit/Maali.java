@@ -13,8 +13,8 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 /**
- *
- * @author jemisalo
+ * Maali-olio esittää pelimaailmassa polkua pitkin kulkevaa vihollista. Maalit
+ * kulkevat parametrina saanuttaan polkua pitkin.
  */
 public class Maali extends Liikkuva {
 
@@ -37,11 +37,16 @@ public class Maali extends Liikkuva {
     public void setHp(int uusi) {
         this.hp = uusi;
     }
-    
-    public int getHp(){
+
+    public int getHp() {
         return this.hp;
     }
 
+    /**
+     * Vähentää Maalin hp yhdellä.
+     *
+     * @return true, jos Maali kuoli osumaan
+     */
     public boolean osuma() {
         this.hp--;
         if (hp == 0) {
@@ -50,6 +55,11 @@ public class Maali extends Liikkuva {
         return false;
     }
 
+    /**
+     * Metodi, jota tulisi kutsua, kun Maali kuolee.
+     *
+     * @param tila Pelitila, jossa Maali on
+     */
     public void tuhoa(Pelitila tila) {
         return;
     }
@@ -58,6 +68,12 @@ public class Maali extends Liikkuva {
         return this.hp <= 0;
     }
 
+    /**
+     * Siirtää Maalia sen nopeuden verran kohti seuraavaa PolunPalaa. Jos Maali
+     * saavuttaa PolunPalan, metodi automaattisesti kasvattaa askelmuuttujaa.
+     *
+     * @return true, jos Maali saavutti polkunsa viimeisen PolunPalan
+     */
     public boolean liiku() {
         PolunPala seuraava;
         try {
@@ -85,25 +101,32 @@ public class Maali extends Liikkuva {
     public String toString() {
         return "Maali " + super.sijainti()[0] + "," + super.sijainti()[1];
     }
+
     @Override
-    public boolean equals(Object o){
-        if(this.getClass()!=o.getClass()){
+    public boolean equals(Object o) {
+        if (this.getClass() != o.getClass()) {
             return false;
-        }else{
+        } else {
             return this.equals((Maali) o);
         }
     }
-    private boolean equals(Maali o){
-        if(this.askel!=o.getAskel()){
+
+    private boolean equals(Maali o) {
+        if (this.askel != o.getAskel()) {
             return false;
         }
-        if(super.sijainti()[0]!=o.sijainti()[0]
-                || super.sijainti()[1]!=o.sijainti()[1]){
+        if (super.sijainti()[0] != o.sijainti()[0]
+                || super.sijainti()[1] != o.sijainti()[1]) {
             return false;
         }
-        if(super.getNopeus()!=o.getNopeus()){
+        if (super.getNopeus() != o.getNopeus()) {
             return false;
         }
-        return this.hp==o.getHp();
+        return this.hp == o.getHp();
+    }
+
+    @Override
+    public int getSade() {
+        return 10;
     }
 }

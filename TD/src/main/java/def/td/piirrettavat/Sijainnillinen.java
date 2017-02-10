@@ -6,8 +6,8 @@
 package def.td.piirrettavat;
 
 /**
- *
- * @author jemisalo
+ * Abstrakti luokka koordinaatit sisältäville olioille. Sisältää metodeja
+ * koordinaattien asettamiseen ja muuttamiseen.
  */
 public abstract class Sijainnillinen {
 
@@ -36,6 +36,12 @@ public abstract class Sijainnillinen {
         this.y += siirtyma;
     }
 
+    /**
+     * Laskee etäisyyden toiseen Sijainnillinen-olioon Pythagoraan lauseella.
+     *
+     * @param toinen Sijainnillinen-olio, johon etäisyyttä mitataan
+     * @return tämän ja parametrin välinen etäisyys liukulukuna
+     */
     public double etaisyys(Sijainnillinen toinen) {
         int[] sijainti = toinen.sijainti();
         return Math.sqrt(Math.pow(this.x - sijainti[0], 2) + Math.pow(this.y - sijainti[1], 2));

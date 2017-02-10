@@ -13,8 +13,8 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 /**
- *
- * @author jemisalo
+ * Torni-olio esittää pelimaailmaan sijoitettua vartiotornia, joka ampuu polkua
+ * pitkin kulkevia Maaleja.
  */
 public class Torni extends Sijainnillinen {
 
@@ -49,10 +49,22 @@ public class Torni extends Sijainnillinen {
         this.hinta = uusi;
     }
 
+    /**
+     * Kertoo, mahtuuko Torni olemaan samassa pelimaailmassa parametrin kanssa.
+     *
+     * @param toinen Sijainnillinen-olio, joka saattaa olla päällekkäin Tornin
+     * kanssa
+     */
     public boolean paallekkain(Sijainnillinen toinen) {
         return super.etaisyys(toinen) < this.sade + toinen.getSade();
     }
 
+    /**
+     * Kertoo, mahtuuko Torni olemaan samassa pelimaailmassa parametrien kanssa.
+     *
+     * @param toiset Lista Sijainnillinen olioita, jotka saattavat olla
+     * päällekkäin Tornin kanssa.
+     */
     public boolean paallekkain(ArrayList toiset) {
         for (Object toinen : toiset) {
             if (this.paallekkain((Sijainnillinen) toinen)) {
@@ -62,6 +74,13 @@ public class Torni extends Sijainnillinen {
         return false;
     }
 
+    /**
+     * Kasvattaa Tornin latausta ja etsii otollisimman Maalin, jos lataus
+     * saavuttaa maksimiarvonsa.
+     *
+     * @param maalit Maalit, joita Torni voi ampua
+     * @param tila Pelitila, jossa Torni on
+     */
     public void tahtaa(ArrayList<Maali> maalit, Pelitila tila) {
         if (this.lataus >= this.maxLataus) {
             Maali paras = null;
@@ -83,6 +102,13 @@ public class Torni extends Sijainnillinen {
         }
     }
 
+    /**
+     * Luo uuden Ammus-olion parametrina saatuun Pelitilaan. Ammus saa
+     * parametrikseen annetun Maalin.
+     *
+     * @param maali Maali, jota kohti Torni ampuu
+     * @param tila Pelitila, jossa torni on
+     */
     public void ammu(Maali maali, Pelitila tila) {
         tila.lisaaAmmus(maali, this.sijainti());
     }

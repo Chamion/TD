@@ -29,25 +29,27 @@ public class PelitilaTest {
 
     @Test
     public void pisteetAlussaNolla() {
-        assertEquals(this.tila.getPisteet(), 0);
+        assertEquals(0, this.tila.getPisteet());
     }
 
     @Test
     public void lisaaPisteetKasvattaaPisteita() {
         this.tila.lisaaPisteet(10);
-        assertEquals(this.tila.getPisteet(), 10);
+        assertEquals(10, this.tila.getPisteet());
+        this.tila.lisaaPisteet(-12);
+        assertEquals(0, this.tila.getPisteet());
     }
 
     @Test
     public void lisaaPisteetEiLuoNegatiivisiaPisteita() {
         this.tila.lisaaPisteet(10);
         this.tila.lisaaPisteet(-20);
-        assertEquals(this.tila.getPisteet(), 0);
+        assertEquals(0, this.tila.getPisteet());
     }
 
     @Test
     public void tornitAlussaTyhja() {
-        assertEquals(this.tila.tornit().size(), 0);
+        assertEquals(0, this.tila.tornit().size());
     }
 
     @Test
@@ -59,22 +61,22 @@ public class PelitilaTest {
         Pelitila polulla = new Pelitila(sijainnit);
         int[] polunSijainti = polulla.polku().get(0).sijainti();
         int[] annettuSijainti = sijainnit.get(0);
-        assertEquals(polunSijainti[0], annettuSijainti[0]);
-        assertEquals(polunSijainti[1], annettuSijainti[1]);
+        assertEquals(annettuSijainti[0], polunSijainti[0]);
+        assertEquals(annettuSijainti[1], polunSijainti[1]);
         polunSijainti = polulla.polku().get(1).sijainti();
         annettuSijainti = sijainnit.get(1);
-        assertEquals(polunSijainti[0], annettuSijainti[0]);
-        assertEquals(polunSijainti[1], annettuSijainti[1]);
+        assertEquals(annettuSijainti[0], polunSijainti[0]);
+        assertEquals(annettuSijainti[1], polunSijainti[1]);
         polunSijainti = polulla.polku().get(2).sijainti();
         annettuSijainti = sijainnit.get(2);
-        assertEquals(polunSijainti[0], annettuSijainti[0]);
-        assertEquals(polunSijainti[1], annettuSijainti[1]);
+        assertEquals(annettuSijainti[0], polunSijainti[0]);
+        assertEquals(annettuSijainti[1], polunSijainti[1]);
     }
 
     @Test
     public void torniaEiLisataJosEiVaraa() {
         this.tila.lisaaTorni(new Torni(100, 100));
-        assertEquals(this.tila.tornit().size(), 0);
+        assertEquals(0, this.tila.tornit().size());
     }
 
     @Test
@@ -82,8 +84,8 @@ public class PelitilaTest {
         Torni torni = new Torni(100, 100);
         this.tila.lisaaPisteet(torni.hinta());
         this.tila.lisaaTorni(torni);
-        assertEquals(this.tila.tornit().get(0), torni);
-        assertEquals(this.tila.getPisteet(), 0);
+        assertEquals(torni, this.tila.tornit().get(0));
+        assertEquals(0, this.tila.getPisteet());
     }
 
     @Test
@@ -91,15 +93,15 @@ public class PelitilaTest {
         Torni torni = new Torni(100, 100);
         this.tila.lisaaPisteet(torni.hinta() * 10);
         this.tila.lisaaTorni(torni);
-        assertEquals(this.tila.tornit().get(0), torni);
+        assertEquals(torni, this.tila.tornit().get(0));
         this.tila.lisaaTorni(torni);
-        assertEquals(this.tila.tornit().size(), 1);
+        assertEquals(1, this.tila.tornit().size());
         ArrayList<int[]> sijainnit = new ArrayList<>();
         sijainnit.add(new int[]{100, 100});
         Pelitila polulla = new Pelitila(sijainnit);
         polulla.lisaaPisteet(torni.hinta() * 10);
         polulla.lisaaTorni(torni);
-        assertEquals(polulla.tornit().size(), 0);
+        assertEquals(0, polulla.tornit().size());
     }
 
     @Test
@@ -115,9 +117,9 @@ public class PelitilaTest {
         sijainnit.add(new int[]{200, 200});
         Pelitila polulla = new Pelitila(sijainnit);
         polulla.lisaaMaali();
-        assertEquals(polulla.maalit().size(), 1);
-        assertEquals(polulla.maalit().get(0).sijainti()[0], sijainnit.get(0)[0]);
-        assertEquals(polulla.maalit().get(0).sijainti()[1], sijainnit.get(0)[1]);
+        assertEquals(1, polulla.maalit().size());
+        assertEquals(sijainnit.get(0)[0], polulla.maalit().get(0).sijainti()[0]);
+        assertEquals(sijainnit.get(0)[1], polulla.maalit().get(0).sijainti()[1]);
     }
 
     @Test
@@ -130,10 +132,10 @@ public class PelitilaTest {
         polulla.lisaaMaali();
         polulla.lisaaAmmus(polulla.maalit().get(0), new int[]{0, 100});
         polulla.liiku();
-        assertEquals(104, polulla.maalit().get(0).sijainti()[0]);
-        assertEquals(100, polulla.maalit().get(0).sijainti()[1]);
-        assertEquals(20, polulla.ammukset().get(0).sijainti()[0]);
-        assertEquals(100, polulla.ammukset().get(0).sijainti()[1]);
+        assertEquals(polulla.maalit().get(0).sijainti()[0], 104);
+        assertEquals(polulla.maalit().get(0).sijainti()[1], 100);
+        assertEquals(polulla.ammukset().get(0).sijainti()[0], 20);
+        assertEquals(polulla.ammukset().get(0).sijainti()[1], 100);
     }
 
     @Test
@@ -177,9 +179,9 @@ public class PelitilaTest {
         polulla.tahtaa();
         assertTrue(polulla.ammukset().isEmpty());
         polulla.tahtaa();
-        assertEquals(1, polulla.ammukset().size());
+        assertEquals(polulla.ammukset().size(), 1);
         polulla.tahtaa();
-        assertEquals(2, polulla.ammukset().size());
+        assertEquals(polulla.ammukset().size(), 2);
     }
 
     @Test
@@ -214,9 +216,9 @@ public class PelitilaTest {
         assertEquals(1, polulla.maalit().size());
         assertEquals("Maali 100,100", polulla.maalit().get(0).toString());
     }
-    
+
     @Test
-    public void equalsTunnistaaSamat(){
+    public void equalsTunnistaaSamat() {
         ArrayList<int[]> sijainnit = new ArrayList<>();
         sijainnit.add(new int[]{100, 100});
         sijainnit.add(new int[]{200, 100});
@@ -226,19 +228,19 @@ public class PelitilaTest {
         sama1.lisaaMaali();
         sama2.lisaaMaali();
         assertTrue(sama1.equals(sama2));
-        Torni torni = new Torni(500,500);
+        Torni torni = new Torni(500, 500);
         torni.setHinta(0);
         sama1.lisaaTorni(torni);
         sama2.lisaaTorni(torni);
         assertTrue(sama1.equals(sama2));
-        Ammus ammus = new Ammus(new int[]{300,300}, sama1.maalit().get(0));
+        Ammus ammus = new Ammus(new int[]{300, 300}, sama1.maalit().get(0));
         sama1.lisaaAmmus(ammus);
         sama2.lisaaAmmus(ammus);
         assertTrue(sama1.equals(sama2));
     }
-    
+
     @Test
-    public void equalsHylkaaEri(){
+    public void equalsHylkaaEri() {
         ArrayList<int[]> sijainnit = new ArrayList<>();
         sijainnit.add(new int[]{100, 100});
         sijainnit.add(new int[]{200, 100});
@@ -249,28 +251,28 @@ public class PelitilaTest {
         Pelitila eri1 = new Pelitila(sijainnit);
         Pelitila eri2 = new Pelitila(sijainnit2);
         assertFalse(eri1.equals(eri2));
-        
+
         eri1 = new Pelitila(sijainnit);
         eri2 = new Pelitila(sijainnit);
         eri1.lisaaMaali();
         eri2.lisaaMaali();
         eri1.liiku();
         assertFalse(eri1.equals(eri2));
-        
+
         eri1 = new Pelitila(sijainnit);
         eri2 = new Pelitila(sijainnit);
         eri1.lisaaMaali();
         eri2.lisaaMaali();
-        eri1.lisaaAmmus(new Ammus(new int[]{200,200},eri1.maalit().get(0)));
-        eri2.lisaaAmmus(new Ammus(new int[]{300,300},eri2.maalit().get(0)));
+        eri1.lisaaAmmus(new Ammus(new int[]{200, 200}, eri1.maalit().get(0)));
+        eri2.lisaaAmmus(new Ammus(new int[]{300, 300}, eri2.maalit().get(0)));
         assertFalse(eri1.equals(eri2));
-        
+
         eri1 = new Pelitila(sijainnit);
         eri2 = new Pelitila(sijainnit);
-        Torni torni1 = new Torni(300,300);
+        Torni torni1 = new Torni(300, 300);
         torni1.setHinta(0);
         eri1.lisaaTorni(torni1);
-        Torni torni2 = new Torni(400,400);
+        Torni torni2 = new Torni(400, 400);
         torni2.setHinta(0);
         eri2.lisaaTorni(torni2);
         assertFalse(eri1.equals(eri2));

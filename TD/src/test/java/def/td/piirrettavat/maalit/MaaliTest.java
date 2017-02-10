@@ -32,11 +32,11 @@ public class MaaliTest {
     @Test
     public void liikuSiirtaaMaaliaOikeanMatkan() {
         this.maali.liiku();
-        assertEquals(this.maali.sijainti()[0], 104);
-        assertEquals(this.maali.sijainti()[1], 100);
+        assertEquals(104, this.maali.sijainti()[0]);
+        assertEquals(100, this.maali.sijainti()[1]);
         this.maali.liiku();
-        assertEquals(this.maali.sijainti()[0], 108);
-        assertEquals(this.maali.sijainti()[1], 100);
+        assertEquals(108, this.maali.sijainti()[0]);
+        assertEquals(100, this.maali.sijainti()[1]);
     }
 
     @Test
@@ -47,16 +47,16 @@ public class MaaliTest {
         Maali vinoLiikkuja = new Maali(polku);
         vinoLiikkuja.setNopeus(4);
         vinoLiikkuja.liiku();
-        assertEquals(vinoLiikkuja.sijainti()[0], 103);
-        assertEquals(vinoLiikkuja.sijainti()[1], 103);
+        assertEquals(103, vinoLiikkuja.sijainti()[0]);
+        assertEquals(103, vinoLiikkuja.sijainti()[1]);
         vinoLiikkuja.setNopeus(5);
         vinoLiikkuja.liiku();
-        assertEquals(vinoLiikkuja.sijainti()[0], 107);
-        assertEquals(vinoLiikkuja.sijainti()[1], 107);
+        assertEquals(107, vinoLiikkuja.sijainti()[0]);
+        assertEquals(107, vinoLiikkuja.sijainti()[1]);
         vinoLiikkuja.setNopeus(6);
         vinoLiikkuja.liiku();
-        assertEquals(vinoLiikkuja.sijainti()[0], 111);
-        assertEquals(vinoLiikkuja.sijainti()[1], 111);
+        assertEquals(111, vinoLiikkuja.sijainti()[0]);
+        assertEquals(111, vinoLiikkuja.sijainti()[1]);
     }
 
     @Test
@@ -88,17 +88,17 @@ public class MaaliTest {
         polku.add(new PolunPala(new int[]{120, 100}));
         Maali askeltaja = new Maali(polku);
         askeltaja.setNopeus(4);
-        assertEquals(askeltaja.getAskel(), 0);
+        assertEquals(0, askeltaja.getAskel());
         askeltaja.liiku();
-        assertEquals(askeltaja.getAskel(), 0);
+        assertEquals(0, askeltaja.getAskel());
         askeltaja.liiku();
-        assertEquals(askeltaja.getAskel(), 1);
+        assertEquals(1, askeltaja.getAskel());
         askeltaja.liiku();
-        assertEquals(askeltaja.getAskel(), 2);
+        assertEquals(2, askeltaja.getAskel());
     }
-    
+
     @Test
-    public void equalsTunnistaaSamat(){
+    public void equalsTunnistaaSamat() {
         ArrayList<PolunPala> polku = new ArrayList<>();
         polku.add(new PolunPala(new int[]{100, 100}));
         polku.add(new PolunPala(new int[]{302, 100}));
@@ -106,9 +106,9 @@ public class MaaliTest {
         sama.setNopeus(4);
         assertTrue(sama.equals(this.maali));
     }
-    
+
     @Test
-    public void equalsHylkaaEri(){
+    public void equalsHylkaaEri() {
         ArrayList<PolunPala> polku = new ArrayList<>();
         polku.add(new PolunPala(new int[]{96, 100}));
         polku.add(new PolunPala(new int[]{100, 100}));

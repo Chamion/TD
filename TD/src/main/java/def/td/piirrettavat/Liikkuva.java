@@ -6,8 +6,8 @@
 package def.td.piirrettavat;
 
 /**
- *
- * @author jemisalo
+ * Abstrakti luokka Liikkuville olioille. Sisältää metodeja olion sijainnin
+ * muuttamiseen.
  */
 public abstract class Liikkuva extends Sijainnillinen {
 
@@ -21,16 +21,28 @@ public abstract class Liikkuva extends Sijainnillinen {
     public void setNopeus(int uusi) {
         this.nopeus = uusi;
     }
-    
-    public int getNopeus(){
+
+    public int getNopeus() {
         return this.nopeus;
     }
-    
-    public void liikuKoordinaatein(int x, int y){
+
+    /**
+     * Siirtää olioa parametrien verran muuttamalla sijaintia.
+     *
+     * @param x x-koordinaatin muutos
+     * @param y y-koordinaatin muutos
+     */
+    public void liikuKoordinaatein(int x, int y) {
         super.moveX(x);
         super.moveY(y);
     }
 
+    /**
+     * Siirtää olioa nopeuden verran kohti parametrina annettua kohdetta.
+     *
+     * @param kohde Sijainnillinen-olio, jota kohti liikutaan
+     * @return true, jos kohde saavutettiin
+     */
     public boolean liikuKohti(Sijainnillinen kohde) {
         double etaisyys = super.etaisyys(kohde);
         if (etaisyys <= this.nopeus) {

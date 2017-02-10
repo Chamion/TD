@@ -13,8 +13,8 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 /**
- *
- * @author jemisalo
+ * Luokka, joka sisältää ja hallinnoi kaikkia pelimaailmassa esiintyviä olioita
+ * ja niiden välisiä suhteita.
  */
 public class Pelitila {
 
@@ -50,6 +50,11 @@ public class Pelitila {
         }
     }
 
+    /**
+     * Lisää uuden Tornin pelimaailmaan.
+     *
+     * @param uusi Torni, joka lisätään
+     */
     public void lisaaTorni(Torni uusi) {
         if (uusi.paallekkain(this.tornit)) {
             return;
@@ -62,15 +67,29 @@ public class Pelitila {
         this.pisteet -= uusi.hinta();
     }
 
+    /**
+     * Lisää oletusarvoisen Maalin polun alkuun.
+     */
     public void lisaaMaali() {
         //tulee kuormittumaan, kun lisään erilaisia maalityyppejä.
         this.maalit.add(new Maali(this.polku));
     }
-    
-    public void lisaaMaali(Maali maali){
+
+    /**
+     * Lisää uuden Maalin pelimaailmaan.
+     *
+     * @param maali Maali, joka lisätään
+     */
+    public void lisaaMaali(Maali maali) {
         this.maalit.add(maali);
     }
 
+    /**
+     * Poistaa parametrina annetun Maalin pelimaailmasta ja kutsuu sen
+     * tuhoa()-metodia.
+     *
+     * @param maali Maali, joka tuhotaan
+     */
     public void tuhoaMaali(Maali maali) {
         maali.tuhoa(this);
         if (this.maalit.contains(maali)) {
@@ -78,21 +97,38 @@ public class Pelitila {
         }
     }
 
+    /**
+     * Lisää oletusarvoisen Ammuksen parametrina annettuun sijaintiin.
+     *
+     * @param maali Maali, joka annetaan Ammuksen parametriksi
+     * @param sijainti koordinaattipari, joka annetaan Ammuksen parametriksi
+     */
     public void lisaaAmmus(Maali maali, int[] sijainti) {
         //kuormitus myöhemmin
         this.ammukset.add(new Ammus(sijainti, maali));
     }
-    
-    public void lisaaAmmus(Ammus ammus){
+
+    /**
+     * Lisää uuden Ammuksen pelimaailmaan.
+     *
+     * @param ammus Ammus, joka lisätään
+     */
+    public void lisaaAmmus(Ammus ammus) {
         this.ammukset.add(ammus);
     }
 
+    /**
+     * Kutsuu kaikkien pelimaailman tornien tahtaa()-metodia.
+     */
     public void tahtaa() {
         for (Torni torni : this.tornit) {
             torni.tahtaa(this.maalit, this);
         }
     }
 
+    /**
+     * Kutsuu kaikkien pelimaailman Liikkuvien liiku()-metodia.
+     */
     public void liiku() {
         for (Maali maali : this.maalit) {
             maali.liiku(); //poista tämä, kun if-lause on käytössä.
@@ -135,6 +171,11 @@ public class Pelitila {
         return this.pisteet;
     }
 
+    /**
+     * Kutsuu kaikkien pelimaailman olioiden piirra()-metodia.
+     *
+     * @param graphics Graphics, johon olioiden graafinen esitys piirretään
+     */
     public void piirra(Graphics graphics) {
         for (Maali maali : this.maalit) {
             maali.piirra(graphics);
@@ -146,45 +187,45 @@ public class Pelitila {
             ammus.piirra(graphics);
         }
     }
-    
+
     @Override
-    public boolean equals(Object o){
-        if(this.getClass()!=o.getClass()){
+    public boolean equals(Object o) {
+        if (this.getClass() != o.getClass()) {
             return false;
         }
         return this.equals((Pelitila) o);
     }
-    
-    private boolean equals(Pelitila o){
-        if(this.ammukset.size()!=o.ammukset().size()){
+
+    private boolean equals(Pelitila o) {
+        if (this.ammukset.size() != o.ammukset().size()) {
             return false;
         }
-        for(int i=0;i<this.ammukset.size();i++){
-            if(!this.ammukset.get(i).equals(o.ammukset().get(i))){
+        for (int i = 0; i < this.ammukset.size(); i++) {
+            if (!this.ammukset.get(i).equals(o.ammukset().get(i))) {
                 return false;
             }
         }
-        if(this.polku.size()!=o.polku().size()){
+        if (this.polku.size() != o.polku().size()) {
             return false;
         }
-        for(int i=0;i<this.polku.size();i++){
-            if(!this.polku.get(i).equals(o.polku().get(i))){
+        for (int i = 0; i < this.polku.size(); i++) {
+            if (!this.polku.get(i).equals(o.polku().get(i))) {
                 return false;
             }
         }
-        if(this.maalit.size()!=o.maalit().size()){
+        if (this.maalit.size() != o.maalit().size()) {
             return false;
         }
-        for(int i=0;i<this.maalit.size();i++){
-            if(!this.maalit.get(i).equals(o.maalit().get(i))){
+        for (int i = 0; i < this.maalit.size(); i++) {
+            if (!this.maalit.get(i).equals(o.maalit().get(i))) {
                 return false;
             }
         }
-        if(this.tornit.size()!=o.tornit().size()){
+        if (this.tornit.size() != o.tornit().size()) {
             return false;
         }
-        for(int i=0;i<this.tornit.size();i++){
-            if(!this.tornit.get(i).equals(o.tornit().get(i))){
+        for (int i = 0; i < this.tornit.size(); i++) {
+            if (!this.tornit.get(i).equals(o.tornit().get(i))) {
                 return false;
             }
         }

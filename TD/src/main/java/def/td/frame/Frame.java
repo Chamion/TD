@@ -15,6 +15,9 @@ import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.*;
 
+/**
+ * Luokka, joka sisältää ja hallinnoi Swing olioita.
+ */
 public class Frame implements Runnable {
 
     private JFrame frame;

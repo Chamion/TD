@@ -5,15 +5,14 @@
  */
 package def.td.frame;
 
-/**
- *
- * @author jemisalo
- */
 import def.td.logiikka.Pelitila;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
+/**
+ * Canvas-luokka, johon pelin graafinen esitys piirtyy.
+ */
 public class Piirtoalusta extends JPanel {
 
     private Pelitila tila;

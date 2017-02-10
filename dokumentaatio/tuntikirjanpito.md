@@ -15,4 +15,6 @@ Päivä | Tunnit | Kuvaus
 02.02.2017 | 0.5h | PelilogiikkaTest alku ja PelitilaTest parannus.
 02.02.2017 | 0.25h | Luokkakaavio.
 02.02.2017 | 0.25h | README linkkailu ja raporttien luominen.
+10.02.2017 | 2h | Testejä.
+10.02.2017 | 2h | Testejä, JavaDoc ja viimeistelyä.
 ... | ... | ...

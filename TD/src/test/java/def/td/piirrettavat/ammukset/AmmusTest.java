@@ -63,9 +63,9 @@ public class AmmusTest {
     public void getMaaliPalauttaaOikeanMaalin() {
         assertEquals(this.tila.maalit().get(0).toString(), this.ammus.getMaali().toString());
     }
-    
+
     @Test
-    public void equalsTunnistaaSamat(){
+    public void equalsTunnistaaSamat() {
         Ammus sama1 = new Ammus(new int[]{100, 200}, this.tila.maalit().get(0));
         sama1.setNopeus(20);
         assertTrue(sama1.equals(this.ammus));
@@ -74,9 +74,9 @@ public class AmmusTest {
         sama2.liiku(this.tila);
         assertTrue(sama2.equals(this.ammus));
     }
-    
+
     @Test
-    public void equalsHylkaaEri(){
+    public void equalsHylkaaEri() {
         Ammus eri1 = new Ammus(new int[]{100, 200}, this.tila.maalit().get(0));
         eri1.setNopeus(10);
         assertFalse(eri1.equals(this.ammus));
