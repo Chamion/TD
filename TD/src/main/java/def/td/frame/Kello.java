@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package def.td.logiikka;
+package def.td.frame;
 
-import def.td.frame.Piirtoalusta;
+import def.td.logiikka.Pelilogiikka;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,18 +15,14 @@ import java.awt.event.ActionListener;
  */
 public class Kello implements ActionListener {
 
-    private final Pelitila tila;
-    private final Piirtoalusta piirtoalusta;
+    private final Pelilogiikka logiikka;
 
-    public Kello(Pelitila tila, Piirtoalusta piirtoalusta) {
-        this.tila = tila;
-        this.piirtoalusta = piirtoalusta;
+    public Kello(Pelilogiikka logiikka) {
+        this.logiikka = logiikka;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.tila.liiku();
-        this.tila.tahtaa();
-        this.piirtoalusta.repaint();
+        this.logiikka.tick();
     }
 }

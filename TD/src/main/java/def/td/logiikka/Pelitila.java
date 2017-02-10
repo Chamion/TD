@@ -5,10 +5,10 @@
  */
 package def.td.logiikka;
 
-import def.td.piirrettavat.Ammus;
-import def.td.piirrettavat.Maali;
+import def.td.piirrettavat.ammukset.Ammus;
+import def.td.piirrettavat.maalit.Maali;
 import def.td.piirrettavat.PolunPala;
-import def.td.piirrettavat.Torni;
+import def.td.piirrettavat.tornit.Torni;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -33,11 +33,7 @@ public class Pelitila {
     }
 
     public Pelitila(ArrayList<int[]> sijainnit) {
-        this.tornit = new ArrayList<>();
-        this.polku = new ArrayList<>();
-        this.maalit = new ArrayList<>();
-        this.ammukset = new ArrayList<>();
-        this.pisteet = 0;
+        this();
         this.luoPolku(sijainnit);
     }
 
@@ -70,6 +66,10 @@ public class Pelitila {
         //tulee kuormittumaan, kun lisään erilaisia maalityyppejä.
         this.maalit.add(new Maali(this.polku));
     }
+    
+    public void lisaaMaali(Maali maali){
+        this.maalit.add(maali);
+    }
 
     public void tuhoaMaali(Maali maali) {
         maali.tuhoa(this);
@@ -81,6 +81,10 @@ public class Pelitila {
     public void lisaaAmmus(Maali maali, int[] sijainti) {
         //kuormitus myöhemmin
         this.ammukset.add(new Ammus(sijainti, maali));
+    }
+    
+    public void lisaaAmmus(Ammus ammus){
+        this.ammukset.add(ammus);
     }
 
     public void tahtaa() {
@@ -141,5 +145,49 @@ public class Pelitila {
         for (Ammus ammus : this.ammukset) {
             ammus.piirra(graphics);
         }
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        if(this.getClass()!=o.getClass()){
+            return false;
+        }
+        return this.equals((Pelitila) o);
+    }
+    
+    private boolean equals(Pelitila o){
+        if(this.ammukset.size()!=o.ammukset().size()){
+            return false;
+        }
+        for(int i=0;i<this.ammukset.size();i++){
+            if(!this.ammukset.get(i).equals(o.ammukset().get(i))){
+                return false;
+            }
+        }
+        if(this.polku.size()!=o.polku().size()){
+            return false;
+        }
+        for(int i=0;i<this.polku.size();i++){
+            if(!this.polku.get(i).equals(o.polku().get(i))){
+                return false;
+            }
+        }
+        if(this.maalit.size()!=o.maalit().size()){
+            return false;
+        }
+        for(int i=0;i<this.maalit.size();i++){
+            if(!this.maalit.get(i).equals(o.maalit().get(i))){
+                return false;
+            }
+        }
+        if(this.tornit.size()!=o.tornit().size()){
+            return false;
+        }
+        for(int i=0;i<this.tornit.size();i++){
+            if(!this.tornit.get(i).equals(o.tornit().get(i))){
+                return false;
+            }
+        }
+        return true;
     }
 }

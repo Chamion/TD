@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package def.td.piirrettavat;
+package def.td.piirrettavat.tornit;
 
 import def.td.logiikka.Pelitila;
+import def.td.piirrettavat.maalit.Maali;
+import def.td.piirrettavat.Sijainnillinen;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -81,7 +83,7 @@ public class Torni extends Sijainnillinen {
         }
     }
 
-    private void ammu(Maali maali, Pelitila tila) {
+    public void ammu(Maali maali, Pelitila tila) {
         tila.lisaaAmmus(maali, this.sijainti());
     }
 
@@ -114,13 +116,10 @@ public class Torni extends Sijainnillinen {
         } else if (this.sijainti()[0] != toinen.sijainti()[0]
                 || this.sijainti()[1] != toinen.sijainti()[1]) {
             return false;
-        } else if (this.sade != toinen.getSade()) {
-            return false;
         }
         return true;
     }
 
-    //Deguggausmetodit
     @Override
     public String toString() {
         return "Torni " + super.sijainti()[0] + "," + super.sijainti()[1];

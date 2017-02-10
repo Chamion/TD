@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package def.td.piirrettavat;
+package def.td.piirrettavat.maalit;
 
 import def.td.logiikka.Pelitila;
+import def.td.piirrettavat.Liikkuva;
+import def.td.piirrettavat.PolunPala;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -34,6 +36,10 @@ public class Maali extends Liikkuva {
 
     public void setHp(int uusi) {
         this.hp = uusi;
+    }
+    
+    public int getHp(){
+        return this.hp;
     }
 
     public boolean osuma() {
@@ -78,5 +84,26 @@ public class Maali extends Liikkuva {
     @Override
     public String toString() {
         return "Maali " + super.sijainti()[0] + "," + super.sijainti()[1];
+    }
+    @Override
+    public boolean equals(Object o){
+        if(this.getClass()!=o.getClass()){
+            return false;
+        }else{
+            return this.equals((Maali) o);
+        }
+    }
+    private boolean equals(Maali o){
+        if(this.askel!=o.getAskel()){
+            return false;
+        }
+        if(super.sijainti()[0]!=o.sijainti()[0]
+                || super.sijainti()[1]!=o.sijainti()[1]){
+            return false;
+        }
+        if(super.getNopeus()!=o.getNopeus()){
+            return false;
+        }
+        return this.hp==o.getHp();
     }
 }

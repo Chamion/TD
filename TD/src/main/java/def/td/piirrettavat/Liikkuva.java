@@ -21,6 +21,15 @@ public abstract class Liikkuva extends Sijainnillinen {
     public void setNopeus(int uusi) {
         this.nopeus = uusi;
     }
+    
+    public int getNopeus(){
+        return this.nopeus;
+    }
+    
+    public void liikuKoordinaatein(int x, int y){
+        super.moveX(x);
+        super.moveY(y);
+    }
 
     public boolean liikuKohti(Sijainnillinen kohde) {
         double etaisyys = super.etaisyys(kohde);

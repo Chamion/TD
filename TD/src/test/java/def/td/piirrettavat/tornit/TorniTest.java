@@ -1,4 +1,4 @@
-package def.td.piirrettavat;
+package def.td.piirrettavat.tornit;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,6 +6,7 @@ package def.td.piirrettavat;
  * and open the template in the editor.
  */
 import def.td.logiikka.Pelitila;
+import def.td.piirrettavat.PolunPala;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
@@ -118,5 +119,18 @@ public class TorniTest {
         tila.liiku();
         tila.tahtaa();
         assertFalse(tila.ammukset().isEmpty());
+    }
+    
+    @Test
+    public void equalsTunnistaaSamat(){
+        Torni sama = new Torni(100, 100);
+        assertTrue(sama.equals(this.torni));
+    }
+    
+    @Test
+    public void equalsHylkaaEri(){
+        Torni eri = new Torni(100,99);
+        assertFalse(eri.equals(this.torni));
+        assertFalse(this.torni.equals(new PolunPala(100,100)));
     }
 }

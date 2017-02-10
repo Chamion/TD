@@ -5,6 +5,7 @@
  */
 package def.td.piirrettavat;
 
+import def.td.piirrettavat.tornit.Torni;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -31,5 +32,24 @@ public class PolunPalaTest {
     @Test
     public void sadeOnKymmenen() {
         assertEquals(this.pala.getSade(), 10);
+    }
+    
+    @Test
+    public void equalsTunnistaaSamat(){
+        PolunPala sama = new PolunPala(new int[]{100, 100});
+        assertTrue(sama.equals(this.pala));
+    }
+    
+    @Test
+    public void equalsHylkaaEri(){
+        PolunPala eri = new PolunPala(new int[]{101, 100});
+        assertFalse(eri.equals(this.pala));
+        eri = new PolunPala(new int[]{99, 100});
+        assertFalse(eri.equals(this.pala));
+        eri = new PolunPala(new int[]{100, 101});
+        assertFalse(eri.equals(this.pala));
+        eri = new PolunPala(new int[]{100, 99});
+        assertFalse(eri.equals(this.pala));
+        assertFalse(this.pala.equals(new Torni(100, 100)));
     }
 }

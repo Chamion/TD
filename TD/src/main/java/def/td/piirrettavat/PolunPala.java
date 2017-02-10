@@ -23,4 +23,20 @@ public class PolunPala extends Sijainnillinen {
     public int getSade() {
         return 10;
     }
+    
+    @Override
+    public boolean equals(Object o){
+        if(this.getClass()!=o.getClass()){
+            return false;
+        }
+        return this.equals((PolunPala) o);
+    }
+    
+    private boolean equals(PolunPala o){
+        if(super.sijainti()[0]!=o.sijainti()[0]
+                || super.sijainti()[1]!=o.sijainti()[1]){
+            return false;
+        }
+        return true;
+    }
 }

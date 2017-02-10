@@ -6,6 +6,8 @@
 package def.td.logiikka;
 
 import def.td.frame.Piirtoalusta;
+import def.td.piirrettavat.tornit.Torni;
+import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -30,6 +32,44 @@ public class PelilogiikkaTest {
         piirtoalusta.setPelitila(tila);
         this.logiikka.setPiirtoalusta(piirtoalusta);
         assertEquals(piirtoalusta, this.logiikka.getPiirtoalusta());
+    }
+    
+    @Test
+    public void setTilaAsettaaPelitilan(){
+        this.logiikka.setTila(new Pelitila());
+        assertTrue(this.logiikka.getTila().equals(new Pelitila()));
+    }
+    
+    @Test
+    public void tickLiikuttaa(){
+        ArrayList<int[]> sijainnit = new ArrayList<>();
+        sijainnit.add(new int[]{100, 100});
+        sijainnit.add(new int[]{200, 100});
+        sijainnit.add(new int[]{200, 200});
+        Pelilogiikka liikuttaja = new Pelilogiikka(sijainnit,new ArrayList<>());
+        liikuttaja.getTila().lisaaMaali();
+        liikuttaja.getTila().lisaaAmmus(liikuttaja.getTila().maalit().get(0), new int[]{0, 100});
+        liikuttaja.tick();
+        assertEquals(104, liikuttaja.getTila().maalit().get(0).sijainti()[0]);
+        assertEquals(100, liikuttaja.getTila().maalit().get(0).sijainti()[1]);
+        assertEquals(20, liikuttaja.getTila().ammukset().get(0).sijainti()[0]);
+        assertEquals(100, liikuttaja.getTila().ammukset().get(0).sijainti()[1]);
+    }
+    
+    @Test
+    public void tickTahtaa(){
+        ArrayList<int[]> sijainnit = new ArrayList<>();
+        sijainnit.add(new int[]{100, 100});
+        sijainnit.add(new int[]{200, 100});
+        Pelilogiikka tahtaaja = new Pelilogiikka(sijainnit,new ArrayList<>());
+        tahtaaja.getTila().lisaaMaali();
+        Torni torni = new Torni(120,100);
+        torni.setLatausAika(1);
+        torni.setKantama(100);
+        torni.setHinta(0);
+        tahtaaja.getTila().lisaaTorni(torni);
+        tahtaaja.tick();
+        assertFalse(tahtaaja.getTila().ammukset().isEmpty());
     }
 
 }

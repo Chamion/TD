@@ -5,9 +5,10 @@ package def.td.logiikka;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import def.td.piirrettavat.Maali;
+import def.td.piirrettavat.maalit.Maali;
 import def.td.piirrettavat.PolunPala;
-import def.td.piirrettavat.Torni;
+import def.td.piirrettavat.ammukset.Ammus;
+import def.td.piirrettavat.tornit.Torni;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
@@ -212,5 +213,66 @@ public class PelitilaTest {
         polulla.tuhoaMaali(toinen);
         assertEquals(1, polulla.maalit().size());
         assertEquals("Maali 100,100", polulla.maalit().get(0).toString());
+    }
+    
+    @Test
+    public void equalsTunnistaaSamat(){
+        ArrayList<int[]> sijainnit = new ArrayList<>();
+        sijainnit.add(new int[]{100, 100});
+        sijainnit.add(new int[]{200, 100});
+        Pelitila sama1 = new Pelitila(sijainnit);
+        Pelitila sama2 = new Pelitila(sijainnit);
+        assertTrue(sama2.equals(sama1));
+        sama1.lisaaMaali();
+        sama2.lisaaMaali();
+        assertTrue(sama1.equals(sama2));
+        Torni torni = new Torni(500,500);
+        torni.setHinta(0);
+        sama1.lisaaTorni(torni);
+        sama2.lisaaTorni(torni);
+        assertTrue(sama1.equals(sama2));
+        Ammus ammus = new Ammus(new int[]{300,300}, sama1.maalit().get(0));
+        sama1.lisaaAmmus(ammus);
+        sama2.lisaaAmmus(ammus);
+        assertTrue(sama1.equals(sama2));
+    }
+    
+    @Test
+    public void equalsHylkaaEri(){
+        ArrayList<int[]> sijainnit = new ArrayList<>();
+        sijainnit.add(new int[]{100, 100});
+        sijainnit.add(new int[]{200, 100});
+        ArrayList<int[]> sijainnit2 = new ArrayList<>();
+        sijainnit2.add(new int[]{100, 100});
+        sijainnit2.add(new int[]{200, 100});
+        sijainnit2.add(new int[]{200, 200});
+        Pelitila eri1 = new Pelitila(sijainnit);
+        Pelitila eri2 = new Pelitila(sijainnit2);
+        assertFalse(eri1.equals(eri2));
+        
+        eri1 = new Pelitila(sijainnit);
+        eri2 = new Pelitila(sijainnit);
+        eri1.lisaaMaali();
+        eri2.lisaaMaali();
+        eri1.liiku();
+        assertFalse(eri1.equals(eri2));
+        
+        eri1 = new Pelitila(sijainnit);
+        eri2 = new Pelitila(sijainnit);
+        eri1.lisaaMaali();
+        eri2.lisaaMaali();
+        eri1.lisaaAmmus(new Ammus(new int[]{200,200},eri1.maalit().get(0)));
+        eri2.lisaaAmmus(new Ammus(new int[]{300,300},eri2.maalit().get(0)));
+        assertFalse(eri1.equals(eri2));
+        
+        eri1 = new Pelitila(sijainnit);
+        eri2 = new Pelitila(sijainnit);
+        Torni torni1 = new Torni(300,300);
+        torni1.setHinta(0);
+        eri1.lisaaTorni(torni1);
+        Torni torni2 = new Torni(400,400);
+        torni2.setHinta(0);
+        eri2.lisaaTorni(torni2);
+        assertFalse(eri1.equals(eri2));
     }
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package def.td.piirrettavat;
+package def.td.piirrettavat.ammukset;
 
 import def.td.logiikka.Pelitila;
 import java.util.ArrayList;
@@ -28,6 +28,7 @@ public class AmmusTest {
         this.tila = new Pelitila(polku);
         this.tila.lisaaMaali();
         this.ammus = new Ammus(new int[]{100, 200}, this.tila.maalit().get(0));
+        this.ammus.setNopeus(20);
     }
 
     @Test
@@ -35,6 +36,10 @@ public class AmmusTest {
         this.ammus.liiku(tila);
         assertEquals(100, this.ammus.sijainti()[0]);
         assertEquals(180, this.ammus.sijainti()[1]);
+        this.ammus.setNopeus(10);
+        this.ammus.liiku(tila);
+        assertEquals(100, this.ammus.sijainti()[0]);
+        assertEquals(170, this.ammus.sijainti()[1]);
     }
 
     @Test
@@ -57,5 +62,31 @@ public class AmmusTest {
     @Test
     public void getMaaliPalauttaaOikeanMaalin() {
         assertEquals(this.tila.maalit().get(0).toString(), this.ammus.getMaali().toString());
+    }
+    
+    @Test
+    public void equalsTunnistaaSamat(){
+        Ammus sama1 = new Ammus(new int[]{100, 200}, this.tila.maalit().get(0));
+        sama1.setNopeus(20);
+        assertTrue(sama1.equals(this.ammus));
+        Ammus sama2 = new Ammus(new int[]{100, 220}, this.tila.maalit().get(0));
+        sama2.setNopeus(20);
+        sama2.liiku(this.tila);
+        assertTrue(sama2.equals(this.ammus));
+    }
+    
+    @Test
+    public void equalsHylkaaEri(){
+        Ammus eri1 = new Ammus(new int[]{100, 200}, this.tila.maalit().get(0));
+        eri1.setNopeus(10);
+        assertFalse(eri1.equals(this.ammus));
+        Ammus eri2 = new Ammus(new int[]{100, 200}, this.tila.maalit().get(0));
+        eri2.setNopeus(20);
+        eri2.liiku(this.tila);
+        assertFalse(eri2.equals(this.ammus));
+        this.tila.liiku();
+        this.tila.lisaaMaali();
+        Ammus eri3 = new Ammus(new int[]{100, 200}, this.tila.maalit().get(1));
+        assertFalse(eri3.equals(this.ammus));
     }
 }

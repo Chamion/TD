@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package def.td.piirrettavat;
+package def.td.piirrettavat.maalit;
 
+import def.td.piirrettavat.PolunPala;
+import def.td.piirrettavat.maalit.Maali;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
@@ -93,5 +95,28 @@ public class MaaliTest {
         assertEquals(askeltaja.getAskel(), 1);
         askeltaja.liiku();
         assertEquals(askeltaja.getAskel(), 2);
+    }
+    
+    @Test
+    public void equalsTunnistaaSamat(){
+        ArrayList<PolunPala> polku = new ArrayList<>();
+        polku.add(new PolunPala(new int[]{100, 100}));
+        polku.add(new PolunPala(new int[]{302, 100}));
+        Maali sama = new Maali(polku);
+        sama.setNopeus(4);
+        assertTrue(sama.equals(this.maali));
+    }
+    
+    @Test
+    public void equalsHylkaaEri(){
+        ArrayList<PolunPala> polku = new ArrayList<>();
+        polku.add(new PolunPala(new int[]{96, 100}));
+        polku.add(new PolunPala(new int[]{100, 100}));
+        polku.add(new PolunPala(new int[]{302, 100}));
+        Maali eri = new Maali(polku);
+        eri.setNopeus(4);
+        assertFalse(eri.equals(this.maali));
+        eri.liiku();
+        assertFalse(eri.equals(this.maali));
     }
 }

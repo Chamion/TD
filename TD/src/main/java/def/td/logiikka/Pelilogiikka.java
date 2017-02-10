@@ -5,8 +5,9 @@
  */
 package def.td.logiikka;
 
+import def.td.frame.Kello;
 import def.td.frame.Piirtoalusta;
-import def.td.piirrettavat.Torni;
+import def.td.piirrettavat.tornit.PerusTorni;
 import java.util.ArrayList;
 import javax.swing.Timer;
 
@@ -32,7 +33,7 @@ public class Pelilogiikka {
         polku.add(new int[]{600, 130});
         this.tila = new Pelitila(polku);
         this.tila.lisaaPisteet(100);
-        this.tila.lisaaTorni(new Torni(200, 100));
+        this.tila.lisaaTorni(new PerusTorni(200, 100));
         this.tila.lisaaMaali();
         this.tila.maalit().get(0).setHp(10);
         this.aallot = new ArrayList<>();
@@ -42,14 +43,32 @@ public class Pelilogiikka {
         this.piirtoalusta = piirtoalusta;
         this.piirtoalusta.setPelitila(this.tila);
     }
-
-    public void kaynnista() {
-        Timer kello = new Timer(200, new Kello(this.tila, this.piirtoalusta));
-        kello.start();
+    
+    public void setTila(Pelitila uusi){
+        this.tila = uusi;
+        if(this.piirtoalusta!=null){
+            this.piirtoalusta.setPelitila(tila);
+        }
     }
 
-    //Testausta varten
+    public void kaynnista() {
+        Timer kello = new Timer(200, new Kello(this));
+        kello.start();
+    }
+    
+    public void tick(){
+        this.tila.liiku();
+        this.tila.tahtaa();
+        if(this.piirtoalusta!=null){
+            this.piirtoalusta.repaint();
+        }
+    }
+
     public Piirtoalusta getPiirtoalusta() {
         return this.piirtoalusta;
+    }
+    
+    public Pelitila getTila(){
+        return this.tila;
     }
 }
