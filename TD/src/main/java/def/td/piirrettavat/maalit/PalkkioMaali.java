@@ -12,11 +12,11 @@ import java.util.ArrayList;
 /**
  * Maali, jonka tuhouduttua, pelaaja saa pisteitä.
  */
-public class SuuriMaali extends Maali {
+public class PalkkioMaali extends Maali {
 
     private int palkkio;
 
-    public SuuriMaali(ArrayList<PolunPala> polku, int hp) {
+    public PalkkioMaali(ArrayList<PolunPala> polku, int hp) {
         super(polku);
         super.setHp(hp);
         super.setNopeus(5);

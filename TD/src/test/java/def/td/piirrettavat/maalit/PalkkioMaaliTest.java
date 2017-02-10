@@ -16,16 +16,16 @@ import static org.junit.Assert.*;
  *
  * @author jemisalo
  */
-public class SuuriMaaliTest {
+public class PalkkioMaaliTest {
 
-    private SuuriMaali maali;
+    private PalkkioMaali maali;
 
     @Before
     public void setUp() {
         ArrayList<PolunPala> polku = new ArrayList<>();
         polku.add(new PolunPala(new int[]{100, 100}));
         polku.add(new PolunPala(new int[]{302, 100}));
-        this.maali = new SuuriMaali(polku, 5);
+        this.maali = new PalkkioMaali(polku, 5);
     }
 
     @Test
