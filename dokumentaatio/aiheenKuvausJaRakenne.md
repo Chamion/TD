@@ -29,10 +29,21 @@ Käyttäjän toiminnot:
 
  * Satunnaisgeneroidun kentän pelaaminen
 
+#Aikarajoitteet
+Aikarajoitteista johtuen projektin toteutus tulee rajoittumaan perustoiminnallisuuteen, eli toimivaan peliin.
+
 #Luokkakaavio
 !["luokkakaavio"](Luokkakaavio.png)
 
 #Sekvenssikaaviot
+
+
+Ensimmäinen kaavio kuvaa mahdollista tapausta, jossa Kello kutsuu Pelilogiikan metodia tick(), kun pelimaailmassa on Maali, Ammus ja Torni, jonka lataus on täysi.
 !["sekvenssikaavio1"](/dokumentaatio/sekvenssikaaviot/sekvenssikaavio1.png)
+
+
+Toinen kaavio kuvaa tapausta, jossa pelaaja valitsee ja sijoittaa uuden tornin pelimaailmaan onnistuneesti.
 !["sekvenssikaavio2"](/dokumentaatio/sekvenssikaaviot/sekvenssikaavio2.png)
+
+Kolmas kaavio kuvaa tapausta, jossa Pelitilan liiku-metodi saa Ammuksen osumaan Maaliin, jolla on vain 1 hp.
 !["sekvenssikaavio3"](/dokumentaatio/sekvenssikaaviot/sekvenssikaavio3.png)

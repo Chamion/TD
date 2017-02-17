@@ -95,4 +95,8 @@ public class Pelilogiikka {
         this.aktiivinenAalto = this.aallot.get(0);
         this.aallot.remove(0);
     }
+
+    public void click(int x, int y) {
+        System.out.println(x + ", " + y);
+    }
 }
