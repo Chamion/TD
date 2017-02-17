@@ -22,6 +22,11 @@ public class Maali extends Liikkuva {
     private int askel;
     private int hp;
 
+    /**
+     * Konstruktori asettaa Maalin parametrina annetun polun alkupisteeseen.
+     *
+     * @param polku Polku, jota pitkin Maali kulkee
+     */
     public Maali(ArrayList<PolunPala> polku) {
         super(polku.get(0).sijainti());
         this.polku = polku;

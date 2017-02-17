@@ -38,6 +38,7 @@ public class SuoraAmmus extends Ammus {
         for (Maali maali : tila.maalit()) {
             if (this.etaisyys(maali) <= maali.getSade()) {
                 maali.osuma();
+                tila.tuhoaMaali(maali);
                 return true;
             }
         }

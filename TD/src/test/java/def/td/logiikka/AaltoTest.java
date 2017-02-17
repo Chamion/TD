@@ -68,4 +68,17 @@ public class AaltoTest {
         aalto.tick();
         assertTrue(aalto.tyhja());
     }
+    
+    @Test
+    public void konstruktoriYmmartaaStringformin(){
+        this.syote.add(2);
+        this.syote.add("pa12/10");
+        this.syote.add("pa100/10");
+        Aalto aaltoStr = new Aalto("2,pa12/10,pa100/10");
+        Aalto aaltoRef = new Aalto(this.syote);
+        for(int i=0;i<5;i++){
+            assertEquals(aaltoRef.tyhja(),aaltoStr.tyhja());
+            assertEquals(aaltoRef.tick(),aaltoStr.tick());
+        }
+    }
 }

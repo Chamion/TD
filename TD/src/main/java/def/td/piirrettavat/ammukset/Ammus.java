@@ -37,6 +37,7 @@ public class Ammus extends Liikkuva {
             return true;
         }
         if (this.maali.kuollut()) {
+            tila.tuhoaMaali(this.maali);
             return true;
         }
         if (super.liikuKohti(this.maali)) {
@@ -55,11 +56,6 @@ public class Ammus extends Liikkuva {
     public void piirra(Graphics graphics) {
         graphics.setColor(Color.red);
         graphics.fillRect(this.sijainti()[0] - 2, this.sijainti()[1] - 2, 4, 4);
-    }
-
-    @Override
-    public String toString() {
-        return "Ammus " + this.sijainti()[0] + ", " + this.sijainti()[1];
     }
 
     @Override

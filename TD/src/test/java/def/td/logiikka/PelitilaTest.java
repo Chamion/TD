@@ -8,6 +8,7 @@ package def.td.logiikka;
 import def.td.piirrettavat.maalit.Maali;
 import def.td.piirrettavat.PolunPala;
 import def.td.piirrettavat.ammukset.Ammus;
+import def.td.piirrettavat.maalit.PalkkioMaali;
 import def.td.piirrettavat.tornit.Torni;
 import java.util.ArrayList;
 import org.junit.Before;
@@ -276,5 +277,17 @@ public class PelitilaTest {
         torni2.setHinta(0);
         eri2.lisaaTorni(torni2);
         assertFalse(eri1.equals(eri2));
+    }
+    
+    @Test
+    public void lisaaMaaliLisaaPalkkioMaalinStringformista(){
+        ArrayList<int[]> sijainnit = new ArrayList<>();
+        sijainnit.add(new int[]{100, 100});
+        sijainnit.add(new int[]{200, 100});
+        Pelitila polulla = new Pelitila(sijainnit);
+        polulla.lisaaMaali("pa20/2");
+        PalkkioMaali maali = new PalkkioMaali(polulla.polku(),20);
+        maali.setPalkkio(2);
+        assertEquals(maali, polulla.maalit().get(0));
     }
 }

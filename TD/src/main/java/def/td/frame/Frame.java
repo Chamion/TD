@@ -39,8 +39,7 @@ public class Frame implements Runnable {
         this.logiikka = new Pelilogiikka(polku,aallot);
         this.logiikka.getTila().lisaaPisteet(100);
         this.logiikka.getTila().lisaaTorni(new HaulikkoTorni(200, 100));
-        this.logiikka.getTila().lisaaMaali();
-        this.logiikka.getTila().maalit().get(0).setHp(10);
+        this.logiikka.seuraavaAalto();
     }
 
     @Override

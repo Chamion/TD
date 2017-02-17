@@ -84,12 +84,19 @@ public class Pelitila {
     public void lisaaMaali(Maali maali) {
         this.maalit.add(maali);
     }
-    
-    public void lisaaMaali(String stringform){
+
+    /**
+     * Kutsuu lisaaMaali-metodia parametrilla, jonka määrittelee annettu
+     * parametri. Metodi lukee uudelle Maalille annettavat tiedot parametrista.
+     *
+     * @param stringform Maalin String-esitys, jonka tulee olla Aalto-olion
+     * käyttämässä formaatissa.
+     */
+    public void lisaaMaali(String stringform) {
         String tyyppi = stringform.substring(0, 2);
-        int hp = Integer.parseInt(stringform.substring(2,stringform.indexOf("/")));
-        int param = Integer.parseInt(stringform.substring(stringform.indexOf("/")+2));
-        switch (tyyppi){
+        int hp = Integer.parseInt(stringform.substring(2, stringform.indexOf("/")));
+        int param = Integer.parseInt(stringform.substring(stringform.indexOf("/") + 1));
+        switch (tyyppi) {
             case "pa":
                 PalkkioMaali lisattava = new PalkkioMaali(this.polku, hp);
                 lisattava.setPalkkio(param);
@@ -213,35 +220,18 @@ public class Pelitila {
     }
 
     private boolean equals(Pelitila o) {
-        if (this.ammukset.size() != o.ammukset().size()) {
+        return (listatSamat(this.ammukset, o.ammukset())
+                && listatSamat(this.maalit, o.maalit())
+                && listatSamat(this.polku, o.polku())
+                && listatSamat(this.tornit, o.tornit()));
+    }
+
+    private boolean listatSamat(ArrayList lista1, ArrayList lista2) {
+        if (lista1.size() != lista2.size()) {
             return false;
         }
-        for (int i = 0; i < this.ammukset.size(); i++) {
-            if (!this.ammukset.get(i).equals(o.ammukset().get(i))) {
-                return false;
-            }
-        }
-        if (this.polku.size() != o.polku().size()) {
-            return false;
-        }
-        for (int i = 0; i < this.polku.size(); i++) {
-            if (!this.polku.get(i).equals(o.polku().get(i))) {
-                return false;
-            }
-        }
-        if (this.maalit.size() != o.maalit().size()) {
-            return false;
-        }
-        for (int i = 0; i < this.maalit.size(); i++) {
-            if (!this.maalit.get(i).equals(o.maalit().get(i))) {
-                return false;
-            }
-        }
-        if (this.tornit.size() != o.tornit().size()) {
-            return false;
-        }
-        for (int i = 0; i < this.tornit.size(); i++) {
-            if (!this.tornit.get(i).equals(o.tornit().get(i))) {
+        for (int i = 0; i < lista1.size(); i++) {
+            if (!lista1.get(i).equals(lista2.get(i))) {
                 return false;
             }
         }

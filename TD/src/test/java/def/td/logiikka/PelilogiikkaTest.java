@@ -30,6 +30,7 @@ public class PelilogiikkaTest {
         aaltoSyote.add("pa1/1");
         ArrayList<Aalto> aallot = new ArrayList<>();
         aallot.add(new Aalto(aaltoSyote));
+        aallot.add(new Aalto(aaltoSyote));
         this.logiikka = new Pelilogiikka(polku,aallot);
         this.logiikka.getTila().lisaaPisteet(100);
         this.logiikka.getTila().lisaaTorni(new HaulikkoTorni(200, 100));
@@ -84,5 +85,29 @@ public class PelilogiikkaTest {
         assertFalse(tahtaaja.getTila().ammukset().isEmpty());
     }
     
+    @Test
+    public void seuraavaAaltoMuuttaaAktiivistaAaltoa(){
+        this.logiikka.tick();
+        assertEquals(1,this.logiikka.getTila().maalit().size());
+        this.logiikka.seuraavaAalto();
+        assertEquals(1,this.logiikka.getTila().maalit().size());
+        this.logiikka.tick();
+        assertEquals(2,this.logiikka.getTila().maalit().size());
+    }
     
+    @Test
+    public void seuraavaAaltoEiYlikirjoitaKeskeneraista(){
+        this.logiikka.tick();
+        assertEquals(1,this.logiikka.getTila().maalit().size());
+        this.logiikka.seuraavaAalto();
+        this.logiikka.seuraavaAalto();
+        assertEquals(1,this.logiikka.getTila().maalit().size());
+        this.logiikka.tick();
+        assertEquals(2,this.logiikka.getTila().maalit().size());
+        this.logiikka.tick();
+        assertEquals(2,this.logiikka.getTila().maalit().size());
+        this.logiikka.seuraavaAalto();
+        this.logiikka.tick();
+        assertEquals(3,this.logiikka.getTila().maalit().size());
+    }
 }

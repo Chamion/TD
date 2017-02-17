@@ -16,6 +16,13 @@ public class PalkkioMaali extends Maali {
 
     private int palkkio;
 
+    /**
+     * Konstruktorille asettaa palkkion oletusarvoon 1. Jos palkkion tulee olla
+     * muu kuin 1, kutsu setPalkkio.
+     *
+     * @param polku Polku, jota pitkin Maali kulkee
+     * @param hp alkuarvo osumapisteille
+     */
     public PalkkioMaali(ArrayList<PolunPala> polku, int hp) {
         super(polku);
         super.setHp(hp);

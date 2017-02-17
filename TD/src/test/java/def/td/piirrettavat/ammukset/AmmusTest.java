@@ -89,4 +89,14 @@ public class AmmusTest {
         Ammus eri3 = new Ammus(new int[]{100, 200}, this.tila.maalit().get(1));
         assertFalse(eri3.equals(this.ammus));
     }
+    
+    @Test
+    public void tappavaOsumaPoistaaMaalin(){
+        this.tila.maalit().get(0).setHp(1);
+        assertFalse(this.tila.maalit().isEmpty());
+        this.ammus.setNopeus(50);
+        this.ammus.liiku(this.tila);
+        this.ammus.liiku(this.tila);
+        assertTrue(this.tila.maalit().isEmpty());
+    }
 }

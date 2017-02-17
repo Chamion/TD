@@ -68,23 +68,31 @@ public class Pelilogiikka {
     public Pelitila getTila() {
         return this.tila;
     }
-    
-    private void lisaaAallonMaali(){
-        if(this.aktiivinenAalto==null){
+
+    private void lisaaAallonMaali() {
+        if (this.aktiivinenAalto == null) {
             return;
         }
         String alkio = this.aktiivinenAalto.tick();
-        if(alkio!=null){
+        if (alkio != null) {
             this.tila.lisaaMaali(alkio);
         }
     }
-    
-    private Aalto seuraavaAalto(){
-        if(this.aallot.isEmpty()){
-            return null;
+
+    /**
+     * Jos aktiivinenAalto on null tai tyhja, aktivoi seuraavan Aallon, eli
+     * päästää pelimaailman polulle lisää Maaleja.
+     */
+    public void seuraavaAalto() {
+        if (this.aallot.isEmpty()) {
+            return;
         }
-        Aalto seuraava = this.aallot.get(0);
+        if (this.aktiivinenAalto != null) {
+            if (!this.aktiivinenAalto.tyhja()) {
+                return;
+            }
+        }
+        this.aktiivinenAalto = this.aallot.get(0);
         this.aallot.remove(0);
-        return seuraava;
     }
 }

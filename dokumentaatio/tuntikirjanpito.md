@@ -18,4 +18,7 @@ Päivä | Tunnit | Kuvaus
 10.02.2017 | 2h | Testejä.
 10.02.2017 | 2h | Testejä, JavaDoc ja viimeistelyä.
 10.02.2017 | 0.5h | Luokkakaavio ja raportit.
+17.02.2017 | 1h | Aalto-luokka.
+17.02.2017 | 2h | Huolellista testausta.
+17.02.2017 | 2h | Sekvenssikaaviot.
 ... | ... | ...

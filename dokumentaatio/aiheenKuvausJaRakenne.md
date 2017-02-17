@@ -31,3 +31,8 @@ Käyttäjän toiminnot:
 
 #Luokkakaavio
 !["luokkakaavio"](Luokkakaavio.png)
+
+#Sekvenssikaaviot
+!["sekvenssikaavio1"](/sekvenssikaaviot/sekvenssikaavio1)
+!["sekvenssikaavio2"](/sekvenssikaaviot/sekvenssikaavio2)
+!["sekvenssikaavio3"](/sekvenssikaaviot/sekvenssikaavio3)
