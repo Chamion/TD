@@ -8,6 +8,7 @@ package def.td.logiikka;
 import def.td.piirrettavat.ammukset.Ammus;
 import def.td.piirrettavat.maalit.Maali;
 import def.td.piirrettavat.PolunPala;
+import def.td.piirrettavat.maalit.PalkkioMaali;
 import def.td.piirrettavat.tornit.Torni;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -82,6 +83,21 @@ public class Pelitila {
      */
     public void lisaaMaali(Maali maali) {
         this.maalit.add(maali);
+    }
+    
+    public void lisaaMaali(String stringform){
+        String tyyppi = stringform.substring(0, 2);
+        int hp = Integer.parseInt(stringform.substring(2,stringform.indexOf("/")));
+        int param = Integer.parseInt(stringform.substring(stringform.indexOf("/")+2));
+        switch (tyyppi){
+            case "pa":
+                PalkkioMaali lisattava = new PalkkioMaali(this.polku, hp);
+                lisattava.setPalkkio(param);
+                this.lisaaMaali(lisattava);
+                break;
+            default:
+                break;
+        }
     }
 
     /**

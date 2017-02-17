@@ -9,10 +9,13 @@ package def.td.frame;
  *
  * @author jemisalo
  */
+import def.td.logiikka.Aalto;
 import def.td.logiikka.Pelilogiikka;
 import def.td.logiikka.Pelitila;
+import def.td.piirrettavat.tornit.HaulikkoTorni;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.util.ArrayList;
 import javax.swing.*;
 
 /**
@@ -26,7 +29,18 @@ public class Frame implements Runnable {
     private Piirtoalusta piirtoalusta;
 
     public Frame() {
-        this.logiikka = new Pelilogiikka();
+        ArrayList<int[]> polku = new ArrayList<>();
+        polku.add(new int[]{0, 150});
+        polku.add(new int[]{600, 130});
+        ArrayList<Object> aaltoSyote = new ArrayList<>();
+        aaltoSyote.add("pa1/1");
+        ArrayList<Aalto> aallot = new ArrayList<>();
+        aallot.add(new Aalto(aaltoSyote));
+        this.logiikka = new Pelilogiikka(polku,aallot);
+        this.logiikka.getTila().lisaaPisteet(100);
+        this.logiikka.getTila().lisaaTorni(new HaulikkoTorni(200, 100));
+        this.logiikka.getTila().lisaaMaali();
+        this.logiikka.getTila().maalit().get(0).setHp(10);
     }
 
     @Override

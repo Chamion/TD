@@ -7,7 +7,6 @@ package def.td.logiikka;
 
 import def.td.frame.Kello;
 import def.td.frame.Piirtoalusta;
-import def.td.piirrettavat.tornit.HaulikkoTorni;
 import java.util.ArrayList;
 import javax.swing.Timer;
 
@@ -18,25 +17,14 @@ import javax.swing.Timer;
 public class Pelilogiikka {
 
     private Pelitila tila;
-    private ArrayList<Object> aallot;
+    private ArrayList<Aalto> aallot;
+    private Aalto aktiivinenAalto;
     private Piirtoalusta piirtoalusta;
 
-    public Pelilogiikka(ArrayList<int[]> polunSijainnit, ArrayList<Object> aallot) {
+    public Pelilogiikka(ArrayList<int[]> polunSijainnit, ArrayList<Aalto> aallot) {
         this.tila = new Pelitila(polunSijainnit);
         this.aallot = aallot;
-    }
-
-    //Debuggaukseen
-    public Pelilogiikka() {
-        ArrayList<int[]> polku = new ArrayList<>();
-        polku.add(new int[]{0, 150});
-        polku.add(new int[]{600, 130});
-        this.tila = new Pelitila(polku);
-        this.tila.lisaaPisteet(100);
-        this.tila.lisaaTorni(new HaulikkoTorni(200, 100));
-        this.tila.lisaaMaali();
-        this.tila.maalit().get(0).setHp(10);
-        this.aallot = new ArrayList<>();
+        this.aktiivinenAalto = null;
     }
 
     public void setPiirtoalusta(Piirtoalusta piirtoalusta) {
@@ -65,6 +53,7 @@ public class Pelilogiikka {
      * Piirtoalustaan.
      */
     public void tick() {
+        this.lisaaAallonMaali();
         this.tila.liiku();
         this.tila.tahtaa();
         if (this.piirtoalusta != null) {
@@ -78,5 +67,24 @@ public class Pelilogiikka {
 
     public Pelitila getTila() {
         return this.tila;
+    }
+    
+    private void lisaaAallonMaali(){
+        if(this.aktiivinenAalto==null){
+            return;
+        }
+        String alkio = this.aktiivinenAalto.tick();
+        if(alkio!=null){
+            this.tila.lisaaMaali(alkio);
+        }
+    }
+    
+    private Aalto seuraavaAalto(){
+        if(this.aallot.isEmpty()){
+            return null;
+        }
+        Aalto seuraava = this.aallot.get(0);
+        this.aallot.remove(0);
+        return seuraava;
     }
 }
