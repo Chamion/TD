@@ -8,6 +8,7 @@ package def.td.frame;
 import def.td.logiikka.Pelilogiikka;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileNotFoundException;
 
 /**
  *
@@ -25,7 +26,10 @@ public class KlikkiKuuntelija implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         int x = e.getX();
         int y = e.getY();
-        this.logiikka.click(x, y);
+        try {
+            this.logiikka.click(x, y);
+        } catch (FileNotFoundException ex) {
+        }
     }
 
     @Override

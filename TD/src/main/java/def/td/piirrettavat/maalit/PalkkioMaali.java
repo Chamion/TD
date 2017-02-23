@@ -43,6 +43,6 @@ public class PalkkioMaali extends Maali {
 
     @Override
     public void tuhoa(Pelitila tila) {
-        tila.lisaaPisteet(1);
+        tila.lisaaPisteet(this.palkkio);
     }
 }

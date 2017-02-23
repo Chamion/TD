@@ -158,12 +158,11 @@ public class Pelitila {
     /**
      * Kutsuu kaikkien pelimaailman Liikkuvien liiku()-metodia.
      */
-    public void liiku() {
+    public boolean liiku() {
         for (Maali maali : this.maalit) {
-            maali.liiku(); //poista tämä, kun if-lause on käytössä.
-            /*if (maali.liiku()) {
-                //gameover
-            }*/
+            if (maali.liiku()) {
+                return true;
+            }
         }
         ArrayList<Ammus> tuhottavatA = new ArrayList<>();
         for (Ammus ammus : this.ammukset) {
@@ -174,6 +173,7 @@ public class Pelitila {
         for (Ammus tuhottava : tuhottavatA) {
             this.ammukset.remove(tuhottava);
         }
+        return false;
     }
 
     public ArrayList<Torni> tornit() {

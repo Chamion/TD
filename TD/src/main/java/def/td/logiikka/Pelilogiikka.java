@@ -9,7 +9,6 @@ import def.td.frame.Kello;
 import def.td.frame.Piirtoalusta;
 import def.td.piirrettavat.tornit.HaulikkoTorni;
 import def.td.piirrettavat.tornit.PerusTorni;
-import def.td.piirrettavat.tornit.Torni;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -27,12 +26,20 @@ public class Pelilogiikka {
     private Aalto aktiivinenAalto;
     private Piirtoalusta piirtoalusta;
     private int valinta;
+    private Timer kello;
+    private boolean peliKaynnissa;
 
     public Pelilogiikka(ArrayList<int[]> polunSijainnit, ArrayList<Aalto> aallot) {
+        this();
         this.tila = new Pelitila(polunSijainnit);
         this.aallot = aallot;
+    }
+    
+    public Pelilogiikka(){
+        this.kello = new Timer(200, new Kello(this));
         this.aktiivinenAalto = null;
         this.valinta = 0;
+        this.peliKaynnissa = false;
     }
 
     public void setPiirtoalusta(Piirtoalusta piirtoalusta) {
@@ -78,8 +85,8 @@ public class Pelilogiikka {
         }
         this.setTila(new Pelitila(polku,20));
         this.aallot = aallot;
-        Timer kello = new Timer(200, new Kello(this));
-        kello.start();
+        this.kello.start();
+        this.peliKaynnissa = true;
     }
 
     /**
@@ -89,7 +96,10 @@ public class Pelilogiikka {
      */
     public void tick() {
         this.lisaaAallonMaali();
-        this.tila.liiku();
+        if(this.tila.liiku()){
+            this.gameOver();
+            return;
+        }
         this.tila.tahtaa();
         if (this.piirtoalusta != null) {
             this.piirtoalusta.repaint();
@@ -123,7 +133,7 @@ public class Pelilogiikka {
             return;
         }
         if (this.aktiivinenAalto != null) {
-            if (!this.aktiivinenAalto.tyhja()) {
+            if (!this.aktiivinenAalto.tyhja() || !this.tila.maalit().isEmpty()) {
                 return;
             }
         }
@@ -131,7 +141,11 @@ public class Pelilogiikka {
         this.aallot.remove(0);
     }
 
-    public void click(int x, int y) {
+    public void click(int x, int y) throws FileNotFoundException {
+        if(!this.peliKaynnissa){
+            this.kaynnista("kentta.txt");
+            return;
+        }
         if(y>=500){
             this.valikkoClick(x,y);
         }else{
@@ -162,5 +176,10 @@ public class Pelilogiikka {
         }else if(x<=300){
             valinta = 2;
         }
+    }
+    
+    private void gameOver(){
+        this.kello.stop();
+        this.peliKaynnissa = false;
     }
 }
