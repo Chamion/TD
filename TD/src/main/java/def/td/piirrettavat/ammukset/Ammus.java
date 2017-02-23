@@ -37,7 +37,6 @@ public class Ammus extends Liikkuva {
             return true;
         }
         if (this.maali.kuollut()) {
-            tila.tuhoaMaali(this.maali);
             return true;
         }
         if (super.liikuKohti(this.maali)) {

@@ -54,10 +54,7 @@ public class Maali extends Liikkuva {
      */
     public boolean osuma() {
         this.hp--;
-        if (hp == 0) {
-            return true;
-        }
-        return false;
+        return hp == 0;
     }
 
     /**

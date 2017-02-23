@@ -18,11 +18,18 @@ public class SuoraAmmus extends Ammus {
     private final int xNopeus;
     private final int yNopeus;
 
-    public SuoraAmmus(int[] sijainti, Maali maali, int xOffset, int yOffset) {
+    public SuoraAmmus(int[] sijainti, Maali maali, int nopeus, int xOffset, int yOffset) {
         super(sijainti, maali);
         double etaisyys = super.etaisyys(maali);
-        this.xNopeus = (int) ((maali.sijainti()[0] - super.sijainti()[0]) * 15 / etaisyys) + xOffset;
-        this.yNopeus = (int) ((maali.sijainti()[1] - super.sijainti()[1]) * 15 / etaisyys) + yOffset;
+        this.xNopeus = (int) ((maali.sijainti()[0] - super.sijainti()[0]) * nopeus / etaisyys) + xOffset;
+        this.yNopeus = (int) ((maali.sijainti()[1] - super.sijainti()[1]) * nopeus / etaisyys) + yOffset;
+    }
+    
+    public SuoraAmmus(int[] sijainti, Maali maali, int nopeus) {
+        super(sijainti, maali);
+        double etaisyys = super.etaisyys(maali);
+        this.xNopeus = (int) ((maali.sijainti()[0] - super.sijainti()[0]) * nopeus / etaisyys);
+        this.yNopeus = (int) ((maali.sijainti()[1] - super.sijainti()[1]) * nopeus / etaisyys);
     }
 
     @Override

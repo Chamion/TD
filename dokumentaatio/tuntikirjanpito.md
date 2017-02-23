@@ -22,4 +22,5 @@ Päivä | Tunnit | Kuvaus
 17.02.2017 | 2h | Huolellista testausta.
 17.02.2017 | 2h | Sekvenssikaaviot.
 17.02.2017 | 1h | Käyttöliittymän kehitys.
+23.02.2017 | 3h | Käyttöliittymä ja kentän luku tiedostosta.
 ... | ... | ...

@@ -35,7 +35,7 @@ public class HaulikkoTorniTest {
         tila.lisaaPisteet(this.torni.hinta());
         tila.lisaaTorni(this.torni);
         this.torni.ammu(tila.maalit().get(0), tila);
-        assertEquals(new SuoraAmmus(this.torni.sijainti(), tila.maalit().get(0), 0, 0), tila.ammukset().get(0));
+        assertEquals(new SuoraAmmus(this.torni.sijainti(), tila.maalit().get(0), 15, 0, 0), tila.ammukset().get(0));
     }
 
     @Test

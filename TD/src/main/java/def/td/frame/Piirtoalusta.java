@@ -29,6 +29,15 @@ public class Piirtoalusta extends JPanel {
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         this.tila.piirra(graphics);
+        this.piirraValikko(graphics);
+    }
+    
+    private void piirraValikko(Graphics graphics){
+        graphics.setColor(Color.black);
+        graphics.drawRect(0, 500, 100, 100);
+        graphics.drawRect(100, 500, 100, 100);
+        graphics.drawRect(200, 500, 100, 100);
+        graphics.drawString("pisteet: "+this.tila.getPisteet(), 400, 550);
     }
 
     @Override

@@ -37,6 +37,11 @@ public class Pelitila {
         this();
         this.luoPolku(sijainnit);
     }
+    
+    public Pelitila(ArrayList<int[]> sijainnit, int pisteet) {
+        this(sijainnit);
+        this.pisteet = pisteet;
+    }
 
     private void luoPolku(ArrayList<int[]> sijainnit) {
         for (int[] sijainti : sijainnit) {
@@ -56,16 +61,17 @@ public class Pelitila {
      *
      * @param uusi Torni, joka lisätään
      */
-    public void lisaaTorni(Torni uusi) {
+    public boolean lisaaTorni(Torni uusi) {
         if (uusi.paallekkain(this.tornit)) {
-            return;
+            return false;
         } else if (uusi.paallekkain(this.polku)) {
-            return;
+            return false;
         } else if (uusi.hinta() > this.pisteet) {
-            return;
+            return false;
         }
         this.tornit.add(uusi);
         this.pisteet -= uusi.hinta();
+        return true;
     }
 
     /**
@@ -160,7 +166,6 @@ public class Pelitila {
             }*/
         }
         ArrayList<Ammus> tuhottavatA = new ArrayList<>();
-        ArrayList<Maali> tuhottavatM = new ArrayList<>();
         for (Ammus ammus : this.ammukset) {
             if (ammus.liiku(this)) {
                 tuhottavatA.add(ammus);
@@ -168,9 +173,6 @@ public class Pelitila {
         }
         for (Ammus tuhottava : tuhottavatA) {
             this.ammukset.remove(tuhottava);
-        }
-        for (Maali tuhottava : tuhottavatM) {
-            this.maalit.remove(tuhottava);
         }
     }
 
@@ -200,6 +202,9 @@ public class Pelitila {
      * @param graphics Graphics, johon olioiden graafinen esitys piirretään
      */
     public void piirra(Graphics graphics) {
+        for (PolunPala pala : this.polku) {
+            pala.piirra(graphics);
+        }
         for (Maali maali : this.maalit) {
             maali.piirra(graphics);
         }

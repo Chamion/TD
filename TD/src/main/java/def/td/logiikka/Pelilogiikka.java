@@ -7,7 +7,13 @@ package def.td.logiikka;
 
 import def.td.frame.Kello;
 import def.td.frame.Piirtoalusta;
+import def.td.piirrettavat.tornit.HaulikkoTorni;
+import def.td.piirrettavat.tornit.PerusTorni;
+import def.td.piirrettavat.tornit.Torni;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.Timer;
 
 /**
@@ -20,11 +26,13 @@ public class Pelilogiikka {
     private ArrayList<Aalto> aallot;
     private Aalto aktiivinenAalto;
     private Piirtoalusta piirtoalusta;
+    private int valinta;
 
     public Pelilogiikka(ArrayList<int[]> polunSijainnit, ArrayList<Aalto> aallot) {
         this.tila = new Pelitila(polunSijainnit);
         this.aallot = aallot;
         this.aktiivinenAalto = null;
+        this.valinta = 0;
     }
 
     public void setPiirtoalusta(Piirtoalusta piirtoalusta) {
@@ -40,9 +48,36 @@ public class Pelilogiikka {
     }
 
     /**
-     * Luo ajastimen, joka kutsuu tick()-metodia tasaisin väliajoin.
+     * 
      */
-    public void kaynnista() {
+    public void kaynnista(String filepath) throws FileNotFoundException {
+        File kentta = new File(filepath);
+        Scanner scanner = new Scanner(kentta);
+        ArrayList<int[]> polku = new ArrayList<>();
+        while(true){
+            String rivi = scanner.nextLine();
+            if(rivi.equals("A")){
+                break;
+            }
+            String[] osat = rivi.split(",");
+            polku.add(new int[]{Integer.parseInt(osat[0]),Integer.parseInt(osat[1])});
+        }
+        ArrayList<Aalto> aallot = new ArrayList<>();
+        while(scanner.hasNextLine()){
+            String rivi = scanner.nextLine();
+            String[] osat = rivi.split(",");
+            ArrayList<Object> syote = new ArrayList<>();
+            for(String osa : osat){
+                try{
+                    syote.add(Integer.parseInt(osa));
+                }catch(Exception e){
+                    syote.add(osa);
+                }
+            }
+            aallot.add(new Aalto(syote));
+        }
+        this.setTila(new Pelitila(polku,20));
+        this.aallot = aallot;
         Timer kello = new Timer(200, new Kello(this));
         kello.start();
     }
@@ -97,6 +132,35 @@ public class Pelilogiikka {
     }
 
     public void click(int x, int y) {
-        System.out.println(x + ", " + y);
+        if(y>=500){
+            this.valikkoClick(x,y);
+        }else{
+            this.canvasClick(x,y);
+        }
+    }
+    private void canvasClick(int x, int y){
+        switch (this.valinta){
+            case 0:
+                return;
+            case 1:
+                if(this.tila.lisaaTorni(new PerusTorni(x,y))){
+                    this.valinta = 0;
+                }
+                return;
+            case 2:
+                if(this.tila.lisaaTorni(new HaulikkoTorni(x,y))){
+                    this.valinta = 0;
+                }
+                return;
+        }
+    }
+    private void valikkoClick(int x, int y){
+        if(x<=100){
+            this.seuraavaAalto();
+        }else if(x<=200){
+            valinta = 1;
+        }else if(x<=300){
+            valinta = 2;
+        }
     }
 }

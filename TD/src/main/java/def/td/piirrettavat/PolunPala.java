@@ -5,6 +5,9 @@
  */
 package def.td.piirrettavat;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  * PolunPala-olio esittää yhtä koordinaattiparia polussa. PolunPalat ovat kuin
  * välietappeja, joiden kautta Maalien on kuljettava.
@@ -38,5 +41,10 @@ public class PolunPala extends Sijainnillinen {
             return false;
         }
         return true;
+    }
+    
+    public void piirra(Graphics graphics){
+        graphics.setColor(Color.gray);
+        graphics.fillRect(this.sijainti()[0] - 10, this.sijainti()[1] - 10, 20, 20);
     }
 }

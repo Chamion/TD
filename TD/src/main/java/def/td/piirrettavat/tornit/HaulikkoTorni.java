@@ -37,7 +37,7 @@ public class HaulikkoTorni extends Torni {
     @Override
     public void ammu(Maali maali, Pelitila tila) {
         for (int[] offset : this.hajonta) {
-            tila.lisaaAmmus(new SuoraAmmus(super.sijainti(), maali, offset[0], offset[1]));
+            tila.lisaaAmmus(new SuoraAmmus(super.sijainti(), maali, 15, offset[0], offset[1]));
         }
     }
 }

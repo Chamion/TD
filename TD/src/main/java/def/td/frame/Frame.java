@@ -12,10 +12,10 @@ package def.td.frame;
 import def.td.logiikka.Aalto;
 import def.td.logiikka.Pelilogiikka;
 import def.td.logiikka.Pelitila;
-import def.td.piirrettavat.tornit.HaulikkoTorni;
-import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -32,7 +32,17 @@ public class Frame implements Runnable {
     public Frame() {
         ArrayList<int[]> polku = new ArrayList<>();
         polku.add(new int[]{0, 150});
-        polku.add(new int[]{600, 130});
+        polku.add(new int[]{15, 150});
+        polku.add(new int[]{25, 160});
+        polku.add(new int[]{35, 170});
+        polku.add(new int[]{50, 170});
+        polku.add(new int[]{50, 185});
+        polku.add(new int[]{60, 195});
+        polku.add(new int[]{75, 195});
+        polku.add(new int[]{90, 195});
+        for(int i=0;i<34;i++){
+            polku.add(new int[]{105+15*i, 195});
+        }
         ArrayList<Object> aaltoSyote = new ArrayList<>();
         aaltoSyote.add("pa1/1");
         ArrayList<Aalto> aallot = new ArrayList<>();
@@ -43,33 +53,29 @@ public class Frame implements Runnable {
         aallot.add(new Aalto(aaltoSyote));
         aallot.add(new Aalto(aaltoSyote));
         this.logiikka = new Pelilogiikka(polku, aallot);
-        this.logiikka.getTila().lisaaPisteet(100);
-        this.logiikka.getTila().lisaaTorni(new HaulikkoTorni(200, 100));
-        this.logiikka.seuraavaAalto();
     }
 
     @Override
     public void run() {
         this.frame = new JFrame();
-        this.frame.setPreferredSize(new Dimension(600, 700));
+        this.frame.setPreferredSize(new Dimension(600, 600));
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.luoKomponentit(frame.getContentPane());
+        try {
+            this.luoKomponentit(frame.getContentPane());
+        } catch (FileNotFoundException ex) {
+        }
         this.frame.pack();
         this.frame.setVisible(true);
     }
 
-    private void luoKomponentit(Container container) {
-        container.setLayout(new BorderLayout());
+    private void luoKomponentit(Container container) throws FileNotFoundException {
+        GridLayout layout = new GridLayout(0,1);
+        container.setLayout(layout);
         this.piirtoalusta = new Piirtoalusta();
-        container.add(this.piirtoalusta, BorderLayout.CENTER);
+        container.add(this.piirtoalusta);
         this.logiikka.setPiirtoalusta(piirtoalusta);
-        this.logiikka.kaynnista();
+        this.logiikka.kaynnista("kentta.txt");
         this.frame.addMouseListener(new KlikkiKuuntelija(this.logiikka));
-        Container valikko = new Container();
-        JButton aaltoNappi = new JButton("Seuraava Aalto");
-        aaltoNappi.addActionListener(new AaltoNappikuuntelija(this.logiikka));
-        //valikko.add(aaltoNappi);
-        container.add(aaltoNappi, BorderLayout.SOUTH);
     }
 
     private void piirra() {

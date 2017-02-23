@@ -28,7 +28,7 @@ public class SuoraAmmusTest {
         polku.add(new int[]{200, 100});
         this.tila = new Pelitila(polku);
         this.tila.lisaaMaali();
-        this.ammus = new SuoraAmmus(new int[]{100, 200}, this.tila.maalit().get(0), 0, 0);
+        this.ammus = new SuoraAmmus(new int[]{100, 200}, this.tila.maalit().get(0), 15, 0, 0);
     }
 
     @Test
@@ -66,15 +66,15 @@ public class SuoraAmmusTest {
     @Test
     public void offsetParametritVaikuttavat(){
         Ammus[] ammukset = new Ammus[9];
-        ammukset[0] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0),0,0);
-        ammukset[1] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0),0,3);
-        ammukset[2] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0),2,4);
-        ammukset[3] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0),6,0);
-        ammukset[4] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0),1,-1);
-        ammukset[5] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0),0,-3);
-        ammukset[6] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0),-7,-2);
-        ammukset[7] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0),-4,0);
-        ammukset[8] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0),-1,3);
+        ammukset[0] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0), 15,0,0);
+        ammukset[1] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0), 15,0,3);
+        ammukset[2] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0), 15,2,4);
+        ammukset[3] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0), 15,6,0);
+        ammukset[4] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0), 15,1,-1);
+        ammukset[5] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0), 15,0,-3);
+        ammukset[6] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0), 15,-7,-2);
+        ammukset[7] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0), 15,-4,0);
+        ammukset[8] = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0), 15,-1,3);
         for(Ammus ammus : ammukset){
             ammus.liiku(this.tila);
         }
@@ -89,13 +89,13 @@ public class SuoraAmmusTest {
     
     @Test
     public void liikuTrueJosYliLaidan(){
-        this.ammus = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0),700,0);
+        this.ammus = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0), 15,700,0);
         assertTrue(this.ammus.liiku(this.tila));
-        this.ammus = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0),-700,0);
+        this.ammus = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0), 15,-700,0);
         assertTrue(this.ammus.liiku(this.tila));
-        this.ammus = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0),0,700);
+        this.ammus = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0), 15,0,700);
         assertTrue(this.ammus.liiku(this.tila));
-        this.ammus = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0),0,-700);
+        this.ammus = new SuoraAmmus(new int[]{300,300},this.tila.maalit().get(0), 15,0,-700);
         assertTrue(this.ammus.liiku(this.tila));
     }
 }
