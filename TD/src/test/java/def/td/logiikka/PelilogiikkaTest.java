@@ -8,6 +8,7 @@ package def.td.logiikka;
 import def.td.frame.Piirtoalusta;
 import def.td.piirrettavat.tornit.HaulikkoTorni;
 import def.td.piirrettavat.tornit.Torni;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
@@ -106,8 +107,34 @@ public class PelilogiikkaTest {
         assertEquals(2,this.logiikka.getTila().maalit().size());
         this.logiikka.tick();
         assertEquals(2,this.logiikka.getTila().maalit().size());
-        this.logiikka.seuraavaAalto();
-        this.logiikka.tick();
-        assertEquals(3,this.logiikka.getTila().maalit().size());
     }
+    
+    @Test
+    public void kaynnistaLukeeSyotteen(){
+        Pelilogiikka testiLogiikka = new Pelilogiikka();
+        testiLogiikka.kaynnista("testi.txt");
+        assertEquals(2,testiLogiikka.getTila().polku().size());
+        assertEquals(20,testiLogiikka.getTila().getPisteet());
+        testiLogiikka.seuraavaAalto();
+        testiLogiikka.tick();
+        assertEquals(1,testiLogiikka.getTila().maalit().size());
+        testiLogiikka.tick();
+        testiLogiikka.tick();
+        assertEquals(1,testiLogiikka.getTila().maalit().size());
+        testiLogiikka.tick();
+        assertEquals(2,testiLogiikka.getTila().maalit().size());
+    }
+    
+    @Test
+    public void kaynnistaErrorHuonollaSyotteella(){
+        Pelilogiikka errorLogiikka = new Pelilogiikka();
+        boolean error = false;
+        try{
+            errorLogiikka.kaynnista("olematontiedosto.txt");
+        }catch(Exception e){
+            error = true;
+        }
+        assertTrue(error);
+    }
+    
 }

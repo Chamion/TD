@@ -18,8 +18,18 @@ import java.util.ArrayList;
  */
 public class Maali extends Liikkuva {
 
-    private ArrayList<PolunPala> polku;
+    /**
+     * ArrayList PolunPaloista, jotka muodostavat polun, jota pitkin Maali
+     * liikkuu.
+     */
+    private final ArrayList<PolunPala> polku;
+    /**
+     * Luku, joka kuvaa Maalin ohittamien PolunPalojen määrää.
+     */
     private int askel;
+    /**
+     * Luku, joka kuvaa Maalin jäljellä olevien osumapisteiden määrää.
+     */
     private int hp;
 
     /**
@@ -94,6 +104,11 @@ public class Maali extends Liikkuva {
         return this.askel;
     }
 
+    /**
+     * Piirtää Maalin graafisen esityksen Piirtoalustaan.
+     *
+     * @param graphics Piirtoalustan graphics-olio.
+     */
     public void piirra(Graphics graphics) {
         graphics.setColor(Color.blue);
         graphics.fillOval(this.sijainti()[0] - 5, this.sijainti()[1] - 5, 10, 10);

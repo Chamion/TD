@@ -76,7 +76,7 @@ public class PelitilaTest {
 
     @Test
     public void torniaEiLisataJosEiVaraa() {
-        this.tila.lisaaTorni(new Torni(100, 100));
+        assertFalse(this.tila.lisaaTorni(new Torni(100, 100)));
         assertEquals(0, this.tila.tornit().size());
     }
 
@@ -84,7 +84,7 @@ public class PelitilaTest {
     public void lisaaTorniLuoTornin() {
         Torni torni = new Torni(100, 100);
         this.tila.lisaaPisteet(torni.hinta());
-        this.tila.lisaaTorni(torni);
+        assertTrue(this.tila.lisaaTorni(torni));
         assertEquals(torni, this.tila.tornit().get(0));
         assertEquals(0, this.tila.getPisteet());
     }
@@ -93,15 +93,15 @@ public class PelitilaTest {
     public void torniaEiLisataJosEiMahdu() {
         Torni torni = new Torni(100, 100);
         this.tila.lisaaPisteet(torni.hinta() * 10);
-        this.tila.lisaaTorni(torni);
+        assertTrue(this.tila.lisaaTorni(torni));
         assertEquals(torni, this.tila.tornit().get(0));
-        this.tila.lisaaTorni(torni);
+        assertFalse(this.tila.lisaaTorni(torni));
         assertEquals(1, this.tila.tornit().size());
         ArrayList<int[]> sijainnit = new ArrayList<>();
         sijainnit.add(new int[]{100, 100});
         Pelitila polulla = new Pelitila(sijainnit);
         polulla.lisaaPisteet(torni.hinta() * 10);
-        polulla.lisaaTorni(torni);
+        assertFalse(polulla.lisaaTorni(torni));
         assertEquals(0, polulla.tornit().size());
     }
 
@@ -289,5 +289,48 @@ public class PelitilaTest {
         PalkkioMaali maali = new PalkkioMaali(polulla.polku(),20);
         maali.setPalkkio(2);
         assertEquals(maali, polulla.maalit().get(0));
+    }
+    
+    @Test
+    public void lisaparametriAsettaaPisteet(){
+        ArrayList<int[]> sijainnit = new ArrayList<>();
+        sijainnit.add(new int[]{100, 100});
+        sijainnit.add(new int[]{200, 100});
+        Pelitila pisteTila = new Pelitila(sijainnit,50);
+        assertEquals(50,pisteTila.getPisteet());
+        assertEquals(new PolunPala(new int[]{100,100}),pisteTila.polku().get(0));
+    }
+    
+    @Test
+    public void liikuTrueKunMaaliSaavuttaaPolunPaan(){
+        ArrayList<int[]> sijainnit = new ArrayList<>();
+        sijainnit.add(new int[]{100, 100});
+        sijainnit.add(new int[]{102, 100});
+        Pelitila polulla = new Pelitila(sijainnit);
+        polulla.lisaaMaali();
+        assertTrue(polulla.liiku());
+    }
+    
+    @Test
+    public void ammuksetPoistetaanKunNeOsuu(){
+        ArrayList<int[]> sijainnit = new ArrayList<>();
+        sijainnit.add(new int[]{100, 100});
+        sijainnit.add(new int[]{200, 100});
+        Pelitila polulla = new Pelitila(sijainnit);
+        polulla.lisaaMaali();
+        polulla.lisaaAmmus(polulla.maalit().get(0), new int[]{100,100});
+        polulla.liiku();
+        assertTrue(polulla.ammukset().isEmpty());
+    }
+    
+    @Test
+    public void maaliTuhoutuuKunSeTuhotaan(){
+        ArrayList<int[]> sijainnit = new ArrayList<>();
+        sijainnit.add(new int[]{100, 100});
+        sijainnit.add(new int[]{200, 100});
+        Pelitila polulla = new Pelitila(sijainnit);
+        polulla.lisaaMaali(new PalkkioMaali(polulla.polku(),1));
+        polulla.tuhoaMaali(polulla.maalit().get(0));
+        assertTrue(polulla.getPisteet()>0);
     }
 }

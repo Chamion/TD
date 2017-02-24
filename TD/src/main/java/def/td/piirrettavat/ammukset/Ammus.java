@@ -17,8 +17,18 @@ import java.awt.Graphics;
  */
 public class Ammus extends Liikkuva {
 
-    private Maali maali;
+    /**
+     * Maali, jota kohti Ammus liikkuu.
+     */
+    private final Maali maali;
 
+    /**
+     * Konstruktori saa parametreinä Ammuksen sijainnin int[] muodossa ja
+     * Maalin, jota kohti Ammus on ammuttu.
+     *
+     * @param sijainti Ampuvan Tornin sijainti
+     * @param maali Maali, johon Ammus hakeutuu
+     */
     public Ammus(int[] sijainti, Maali maali) {
         super(sijainti);
         this.maali = maali;
@@ -52,6 +62,11 @@ public class Ammus extends Liikkuva {
         return this.maali;
     }
 
+    /**
+     * Piirtää Ammuksen graafisen esityksen Piirtoalustaan.
+     *
+     * @param graphics Piirtoalustan graphics-olio.
+     */
     public void piirra(Graphics graphics) {
         graphics.setColor(Color.red);
         graphics.fillRect(this.sijainti()[0] - 2, this.sijainti()[1] - 2, 4, 4);

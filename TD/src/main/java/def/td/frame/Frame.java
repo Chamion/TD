@@ -14,7 +14,6 @@ import def.td.logiikka.Pelitila;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.io.FileNotFoundException;
 import javax.swing.*;
 
 /**
@@ -22,9 +21,21 @@ import javax.swing.*;
  */
 public class Frame implements Runnable {
 
+    /**
+     * JFrame, joka sisältää kaikki käyttöliittymän Swing-oliot
+     */
     private JFrame frame;
+    /**
+     * Pelitila, joka tulee piirtää piirtoalustaan.
+     */
     private Pelitila tila;
-    private Pelilogiikka logiikka;
+    /**
+     * Pelilogiikka, joka käsittelee käyttöliittymän syötteet.
+     */
+    private final Pelilogiikka logiikka;
+    /**
+     * Piirtoalusta, johon piirtyy pelin tilanne.
+     */
     private Piirtoalusta piirtoalusta;
 
     public Frame() {
@@ -36,16 +47,13 @@ public class Frame implements Runnable {
         this.frame = new JFrame();
         this.frame.setPreferredSize(new Dimension(600, 600));
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        try {
-            this.luoKomponentit(frame.getContentPane());
-        } catch (FileNotFoundException ex) {
-        }
+        this.luoKomponentit(frame.getContentPane());
         this.frame.pack();
         this.frame.setVisible(true);
     }
 
-    private void luoKomponentit(Container container) throws FileNotFoundException {
-        GridLayout layout = new GridLayout(0,1);
+    private void luoKomponentit(Container container){
+        GridLayout layout = new GridLayout(0, 1);
         container.setLayout(layout);
         this.piirtoalusta = new Piirtoalusta();
         container.add(this.piirtoalusta);

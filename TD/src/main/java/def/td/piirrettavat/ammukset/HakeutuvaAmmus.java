@@ -12,6 +12,14 @@ import def.td.piirrettavat.maalit.Maali;
  */
 public class HakeutuvaAmmus extends Ammus {
 
+    /**
+     * Konstruktori saa samat parametrit kuin yläluokka Ammus.
+     *
+     * @see def.td.piirrettavat.ammukset#Ammus(int[],Maali)
+     *
+     * @param sijainti Ampuvan Tornin sijainti
+     * @param maali Maali, johon Ammus hakeutuu
+     */
     public HakeutuvaAmmus(int[] sijainti, Maali maali) {
         super(sijainti, maali);
         super.setNopeus(10);

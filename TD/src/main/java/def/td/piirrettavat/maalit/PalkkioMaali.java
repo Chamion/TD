@@ -14,11 +14,18 @@ import java.util.ArrayList;
  */
 public class PalkkioMaali extends Maali {
 
+    /**
+     * Luku, joka kuvaa Maalin tuhoutumisesta saatavien pisteiden määrää.
+     */
     private int palkkio;
 
     /**
-     * Konstruktorille asettaa palkkion oletusarvoon 1. Jos palkkion tulee olla
-     * muu kuin 1, kutsu setPalkkio.
+     * Konstruktorille annetaan polku, kuten yläluokalle Maali. Lisäksi
+     * konstruktori saa parametrina osumapisteiden alkuarvon. Konstruktor
+     * asettaa palkkion oletusarvoon 1. Jos palkkion tulee olla muu kuin 1,
+     * kutsu setPalkkio.
+     *
+     * @see def.td.piirrettavat.maalit#Maali(ArrayList)
      *
      * @param polku Polku, jota pitkin Maali kulkee
      * @param hp alkuarvo osumapisteille
@@ -41,6 +48,12 @@ public class PalkkioMaali extends Maali {
         return this.palkkio;
     }
 
+    /**
+     * PalkkioMaalin tuhoutuessa Pelitilan pisteet kasvavat PalkkioMaalin
+     * palkkion verran.
+     *
+     * @param tila Pelitila, jossa Maali on
+     */
     @Override
     public void tuhoa(Pelitila tila) {
         tila.lisaaPisteet(this.palkkio);

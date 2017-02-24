@@ -11,13 +11,23 @@ import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
 
 /**
+ * Event listener hiiren napsautuksille.
  *
  * @author jemisalo
  */
 public class KlikkiKuuntelija implements MouseListener {
 
-    private Pelilogiikka logiikka;
+    /**
+     * Pelilogiikka, jonka click-metodia KlikkiKuuntelija kutsuu.
+     */
+    private final Pelilogiikka logiikka;
 
+    /**
+     * Konstruktori saa Pelilogiikan argumenttina.
+     *
+     * @param logiikka Pelilogiikka, jonka click-metodia KlikkiKuuntelija
+     * kutsuu.
+     */
     public KlikkiKuuntelija(Pelilogiikka logiikka) {
         this.logiikka = logiikka;
     }
@@ -26,10 +36,7 @@ public class KlikkiKuuntelija implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         int x = e.getX();
         int y = e.getY();
-        try {
-            this.logiikka.click(x, y);
-        } catch (FileNotFoundException ex) {
-        }
+        this.logiikka.click(x, y);
     }
 
     @Override

@@ -14,8 +14,21 @@ import def.td.piirrettavat.maalit.Maali;
  */
 public class HaulikkoTorni extends Torni {
 
+    /**
+     * taulukko kokonaislukutaulukoita, jotka kuvaavat häirintäarvopareja
+     * {xOffset,yOffset}. Kun HaulikkoTorni ampuu, se käyttää jokaista näistä
+     * häirintäarvopareista kerran parametreina SuoraAmmukselle.
+     */
     private int[][] hajonta;
 
+    /**
+     * Konstruktori saa samat parametrit kuin yläluokka Torni.
+     *
+     * @see def.td.piirrettavat.tornit#Torni(int,int)
+     *
+     * @param x Tornin x-koordinaatti
+     * @param y Tornin y-koordinaatti
+     */
     public HaulikkoTorni(int x, int y) {
         super(x, y);
         super.setHinta(25);
@@ -34,6 +47,12 @@ public class HaulikkoTorni extends Torni {
         this.hajonta[8] = new int[]{2, -2};
     }
 
+    /**
+     * HaulikkoTorni ampuu 9 SuoraAmmusta aina, kun ammu-metodia kutsutaan.
+     *
+     * @param maali Maali, jota kohti ammutaan
+     * @param tila Pelitila, jossa Torni on
+     */
     @Override
     public void ammu(Maali maali, Pelitila tila) {
         for (int[] offset : this.hajonta) {

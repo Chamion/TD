@@ -19,12 +19,32 @@ import java.util.ArrayList;
  */
 public class Pelitila {
 
+    /**
+     * Pelaajan jäljellä oleva pistemäärä, jolla hän voi lisätä torneja.
+     */
     private int pisteet;
+    /**
+     * ArrayList kaikista pelimaailman Torneista.
+     */
     private ArrayList<Torni> tornit;
+    /**
+     * ArrayList kaikista pelimaailman PolunPaloista.
+     */
     private ArrayList<PolunPala> polku;
+    /**
+     * ArrayList kaikista pelimaailman Maaleista.
+     */
     private ArrayList<Maali> maalit;
+    /**
+     * ArrayList kaikista pelimaailman Ammuksista.
+     */
     private ArrayList<Ammus> ammukset;
 
+    /**
+     * Vanhentunut konstruktori. Käytä uutta parametrillistä.
+     *
+     * @see def.td.logiikka#Pelitila(ArrayList)
+     */
     public Pelitila() {
         this.tornit = new ArrayList<>();
         this.polku = new ArrayList<>();
@@ -33,11 +53,29 @@ public class Pelitila {
         this.pisteet = 0;
     }
 
+    /**
+     * Konstruktori saa parametrinä ArrayListin int[]-muotoisia
+     * Koordinaattipareja, joista tulee Pelitilan polun PolunPalojen
+     * koordinaatit.
+     *
+     * @param sijainnit ArrayList int[]-muotoisia kokonaislukuparej, missä [0]
+     * on x-koordinaatti ja [1] y-koordinaatti.
+     */
     public Pelitila(ArrayList<int[]> sijainnit) {
         this();
         this.luoPolku(sijainnit);
     }
-    
+
+    /**
+     * Konstruktori saa sijaintien lisäksi parametrinä pisteet, josta tulee
+     * Pelitilan pisteiden alkuarvo.
+     *
+     * @see def.td.logiikka#Pelitila(ArrayList)
+     *
+     * @param sijainnit ArrayList int[]-muotoisia kokonaislukuparej, missä [0]
+     * on x-koordinaatti ja [1] y-koordinaatti.
+     * @param pisteet alkuarvo pisteille
+     */
     public Pelitila(ArrayList<int[]> sijainnit, int pisteet) {
         this(sijainnit);
         this.pisteet = pisteet;
@@ -49,6 +87,12 @@ public class Pelitila {
         }
     }
 
+    /**
+     * Kasvattaa pisteitä parametrin verran. Negatiivinen parametri vähentää
+     * pisteitä.
+     *
+     * @param lisaa pisteiden muutos
+     */
     public void lisaaPisteet(int lisaa) {
         this.pisteet += lisaa;
         if (this.pisteet < 0) {
@@ -60,6 +104,7 @@ public class Pelitila {
      * Lisää uuden Tornin pelimaailmaan.
      *
      * @param uusi Torni, joka lisätään
+     * @return true, jos Torni lisättiin
      */
     public boolean lisaaTorni(Torni uusi) {
         if (uusi.paallekkain(this.tornit)) {
@@ -157,6 +202,8 @@ public class Pelitila {
 
     /**
      * Kutsuu kaikkien pelimaailman Liikkuvien liiku()-metodia.
+     *
+     * @return true, jos peli päättyy
      */
     public boolean liiku() {
         for (Maali maali : this.maalit) {

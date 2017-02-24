@@ -15,12 +15,17 @@ import javax.swing.JPanel;
  */
 public class Piirtoalusta extends JPanel {
 
+    /**
+     * Pelitila, jonka piirrettaviä olioita piirtyy Piirtoalustaan.
+     */
     private Pelitila tila;
 
-    public Piirtoalusta() {
-        super.setBackground(Color.WHITE);
-    }
-
+    /**
+     * Konstruktori saa Pelitilan argumenttina, sillä kaikki piirrettävät oliot
+     * ovat tallennettuna Pelitilaan.
+     *
+     * @param tila Pelitila, jonka Piirtoalusta piirtää.
+     */
     public void setPelitila(Pelitila tila) {
         this.tila = tila;
     }
@@ -31,13 +36,18 @@ public class Piirtoalusta extends JPanel {
         this.tila.piirra(graphics);
         this.piirraValikko(graphics);
     }
-    
-    private void piirraValikko(Graphics graphics){
+
+    private void piirraValikko(Graphics graphics) {
         graphics.setColor(Color.black);
         graphics.drawRect(0, 500, 100, 100);
+        graphics.drawString("Seuraava Aalto", 3, 540);
         graphics.drawRect(100, 500, 100, 100);
+        graphics.drawString("Perustorni", 120, 540);
+        graphics.drawString("10p", 145, 560);
         graphics.drawRect(200, 500, 100, 100);
-        graphics.drawString("pisteet: "+this.tila.getPisteet(), 400, 550);
+        graphics.drawString("Haulikkotorni", 210, 540);
+        graphics.drawString("25p", 245, 560);
+        graphics.drawString("pisteet: " + this.tila.getPisteet(), 400, 550);
     }
 
     @Override

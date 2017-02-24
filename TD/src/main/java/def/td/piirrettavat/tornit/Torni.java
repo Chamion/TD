@@ -18,12 +18,36 @@ import java.util.ArrayList;
  */
 public class Torni extends Sijainnillinen {
 
+    /**
+     * Kokonaisluku, joka kuvaa Tornin sädettä.
+     */
     private int sade;
+    /**
+     * Kokonaisluku, joka kuvaa Tornin lisäyshintaa pisteissä.
+     */
     private int hinta;
+    /**
+     * Kokonaisluku, joka kuvaa Tornin maksimikantamaa, eli suurinta etäisyyttä,
+     * jolla torni voi tähdätä. Ammukset voivat liikkua pidemmälle kuin kantama.
+     */
     private int kantama;
+    /**
+     * Kokonaisluku, joka kuvaa aikaa, jonka Torni on ollut ampumatta.
+     */
     private int lataus;
+    /**
+     * Kokonaisluku, joka kuvaa aikaa, jonka Tornin on oltava ampumatta
+     * ampuakseen uudestaan.
+     */
     private int maxLataus;
 
+    /**
+     * Konstruktori saa parametreinä x- ja y koordinaatit, jotka kuvaavat Tornin
+     * sijaintia pelimaailmassa.
+     *
+     * @param x Tornin x-koordinaatti
+     * @param y Tornin y-koordinaatti
+     */
     public Torni(int x, int y) {
         super(x, y);
         this.sade = 10;

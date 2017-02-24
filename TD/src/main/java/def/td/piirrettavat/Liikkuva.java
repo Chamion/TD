@@ -11,8 +11,18 @@ package def.td.piirrettavat;
  */
 public abstract class Liikkuva extends Sijainnillinen {
 
+    /**
+     * Matka, jonka Liikkuva siirtyy liikuKohti-metodilla.
+     */
     private int nopeus;
 
+    /**
+     * Konstruktori saa parametrina int[]-muotoisen lukuparin, joka esittää
+     * olion koordinaatteja pelimaailmassa.
+     *
+     * @param sijainti 2-pituinen int-taulukko, jossa sijainti[0] on
+     * x-koordinaati ja sijainti[1] y-koordinaatti.
+     */
     public Liikkuva(int[] sijainti) {
         super(sijainti);
         this.nopeus = 0;

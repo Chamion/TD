@@ -14,6 +14,14 @@ import def.td.piirrettavat.maalit.Maali;
  */
 public class PerusTorni extends Torni {
 
+    /**
+     * Konstruktori saa samat parametrit kuin yläluokka Torni.
+     *
+     * @see def.td.piirrettavat.tornit#Torni(int,int)
+     *
+     * @param x Tornin x-koordinaatti
+     * @param y Tornin y-koordinaatti
+     */
     public PerusTorni(int x, int y) {
         super(x, y);
         super.setHinta(10);
@@ -22,6 +30,12 @@ public class PerusTorni extends Torni {
         super.setSade(10);
     }
 
+    /**
+     * Perustorni ampuu HakeutuvaAmmuksia Ammusten sijaan.
+     *
+     * @param maali Maali, jota kohti Torni ampuu
+     * @param tila Pelitila, jossa torni on
+     */
     @Override
     public void ammu(Maali maali, Pelitila tila) {
         tila.lisaaAmmus(new HakeutuvaAmmus(this.sijainti(), maali));

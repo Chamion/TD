@@ -14,16 +14,38 @@ import java.util.ArrayList;
  */
 public class Aalto {
 
+    /**
+     * ArrayList String- ja int-arvoja, jotka määrittävät mitä tick-metodi
+     * palauttaa.
+     */
     private final ArrayList<Object> syote;
+    /**
+     * odotus on luku, joka määrää kuinka monta seuraavaa tick-metdikutsua
+     * tulisi vielä palauttaa null.
+     */
     private int odotus;
+    /**
+     * Indeksi, mistä seuraava syote-listan alkio tulisi lukea.
+     */
     private int syoteIndex;
 
+    /**
+     * Konstruktorille voidaan antaa syöte suoraan ArrayList-muodossa.
+     *
+     * @param syote ArrayList, joka sisältää int ja String arvoja.
+     */
     public Aalto(ArrayList<Object> syote) {
         this.syote = syote;
         this.odotus = 0;
         this.syoteIndex = 0;
     }
 
+    /**
+     * Konstruktori osaa lukea syötteen pilkuilla erotetusta merkkijonosta,
+     * josta se automaattisesti parsee int muotoiset arvot.
+     *
+     * @param stringform pilkuilla erotettu lista String muodossa.
+     */
     public Aalto(String stringform) {
         this.syote = new ArrayList<>();
         this.odotus = 0;

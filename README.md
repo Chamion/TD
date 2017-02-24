@@ -19,6 +19,6 @@ Pelin grafiikkaan en aio panostaa, koska se on kurssin kannalta epäoleellista. 
 
 [tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 
-[pit-raportti](https://htmlpreview.github.io/?https://github.com/Chamion/TD/blob/master/dokumentaatio/pit-raportti/201702171919/index.html)
+[pit-raportti](https://htmlpreview.github.io/?https://github.com/Chamion/TD/blob/master/dokumentaatio/pit-raportti/201702241613/index.html)
 
 [checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/Chamion/TD/blob/master/dokumentaatio/checkstyle-raportti/checkstyle.html)

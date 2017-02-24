@@ -14,8 +14,16 @@ import java.awt.event.ActionListener;
  */
 public class Kello implements ActionListener {
 
+    /**
+     * Pelilogiikka, jonka tick-metodia Kello kutsuu.
+     */
     private final Pelilogiikka logiikka;
 
+    /**
+     * Konstruktorille annetaan Pelilogiikka argumenttina.
+     *
+     * @param logiikka Pelilogiikka, jonka tick-metodia Kello kutsuu.
+     */
     public Kello(Pelilogiikka logiikka) {
         this.logiikka = logiikka;
     }
