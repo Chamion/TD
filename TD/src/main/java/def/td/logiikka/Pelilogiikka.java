@@ -96,7 +96,7 @@ public class Pelilogiikka {
      *
      * @param filepath Ladattavan kentän tiedoston polku.
      */
-    public void kaynnista(String filepath){
+    public void kaynnista(String filepath) {
         InputStream is = getClass().getClassLoader().getResourceAsStream(filepath);
         Scanner scanner = new Scanner(is);
         ArrayList<int[]> polku = new ArrayList<>();
@@ -192,7 +192,7 @@ public class Pelilogiikka {
      * @param x Klikkauksen etäisyys ikkunan vasemmasta reunasta.
      * @param y Klikkauksen etäisyys ikkunan yläreunasta.
      */
-    public void click(int x, int y){
+    public void click(int x, int y) {
         if (!this.peliKaynnissa) {
             this.kaynnista("kentta.txt");
             return;

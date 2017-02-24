@@ -52,7 +52,7 @@ public class Frame implements Runnable {
         this.frame.setVisible(true);
     }
 
-    private void luoKomponentit(Container container){
+    private void luoKomponentit(Container container) {
         GridLayout layout = new GridLayout(0, 1);
         container.setLayout(layout);
         this.piirtoalusta = new Piirtoalusta();
