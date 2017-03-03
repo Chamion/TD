@@ -25,5 +25,5 @@ Päivä | Tunnit | Kuvaus
 23.02.2017 | 3h | Käyttöliittymä ja kentän luku tiedostosta.
 23.02.2017 | 0.5h | Pelin päättyminen ja uudelleenalkaminen.
 24.02.2017 | 4h | Testausta ja dokumentointia.
-03.03.2017 | 0.25h | Korjauksia.
+03.03.2017 | 0.5h | Korjauksia ja testausdokumentaatio.
 ... | ... | ...

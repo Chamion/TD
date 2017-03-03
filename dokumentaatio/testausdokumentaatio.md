@@ -3,4 +3,4 @@ Pelin logiikka on kattavasti testattu automaattisilla testeillä. Käyttöliitty
 
 Tiedetyt bugit:
 * Yllättävä syöte kentta.txt tiedostossa johtaa ohjelman kaatumiseen. Ratkaisu: varmista syötteen oikeellisuus, tiedostoa muutettaessa.
-* Peli ei pääty, kun aallot loppuvat. Ratkaisu: Aallot eivät saa loppua, eli kentta.txt on sisällettävä mahdottoman vaikea aalto.
+* Peli ei pääty, kun aallot loppuvat. Ratkaisu: Aallot eivät saa loppua eli kentta.txt on sisällettävä mahdottoman vaikea aalto.
