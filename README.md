@@ -15,6 +15,8 @@ Mahdollisia laajennuksia ovat:
 
 Pelin grafiikkaan en aio panostaa, koska se on kurssin kannalta epäoleellista. Tod. näk. kierrätän jonkin vanhan peliprojektin resursseja.
 
+[käyttöohje](dokumentaatio/käyttöohjeet.md)
+
 [aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
 
 [tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
